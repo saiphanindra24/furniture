@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Furniro Product Page</title>
+  <link rel="stylesheet" href="single_product.css" />
+  <link rel="stylesheet" href="cart.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+
+  <header class="navbar">
+
+    <!-- Logo -->
+    <div class="nav-logo">
+      <img src="assets/images/logo.png">
+      <span class="logo-text">Furniro</span>
+    </div>
+
+    <!-- Nav Links -->
+    <nav class="nav-links">
+      <a href="#" class="nav-link active">Home</a>
+      <a href="#" class="nav-link">Shop</a>
+      <a href="#" class="nav-link">About</a>
+      <a href="#" class="nav-link">Contact</a>
+    </nav>
+
+    <!-- Icons -->
+    <div class="nav-icons">
+      <button class="icon-btn" title="Account">
+        <img src="assets/images/l1.png">
+      </button>
+      <button class="icon-btn" title="Search">
+        <img src="assets/images/l2.png">
+      </button>
+      <button class="icon-btn" title="Wishlist">
+        <img src="assets/images/l3.png">
+      </button>
+      <button class="icon-btn cart-btn" title="Cart" >
+        <img src="assets/images/l4.png">
+      </button>
+    </div>
+
+  </header>
+
+  <div class="breadcrumb">
+    <a href="#">Home</a>
+    <span>&#8250;</span>
+    <a href="#">Shop</a>
+    <span>&#8250;</span>
+    <span class="divider">|</span>
+    <span class="current">Asgaard sofa</span>
+  </div>
+
+
+  <div class="product-section">
+
+    <!-- Thumbnails -->
+    <div class="thumbnails">
+      <!-- Add the high-resolution image file name in data-main-src -->
+      <img src="assets/images/i1.png" alt="thumb1" class="thumb active" data-main-src="assets/images/main.png" />
+      <img src="assets/images/i2.png" alt="thumb2" class="thumb" data-main-src="assets/images/second.png" />
+      <img src="assets/images/i3.png" alt="thumb3" class="thumb" data-main-src="assets/images/i3.png" />
+      <img src="assets/images/i4.png" alt="thumb4" class="thumb" data-main-src="assets/images/i4.png" />
+    </div>
+
+    <!-- Main Image -->
+    <div class="main-image">
+      <img src="assets/images/main.png" alt="Asgaard Sofa" />
+    </div>
+
+    <!-- Product Info -->
+    <div class="product-info">
+
+      <h1>Asgaard sofa</h1>
+      <p class="price">Rs. 250,000.00</p>
+
+      <div class="rating">
+        <img src="assets/images/stars.png">
+        <span class="divider">|</span>
+        <span class="review-text">5 Customer Reviews</span>
+      </div>
+
+      <p class="desc">
+        Crafted for modern living rooms, the Asgaard sofa blends premium comfort with elegant design, offering plush support,
+        deep seating, and a refined silhouette that suits both contemporary and classic interiors.
+      </p>
+
+      <p class="label">Size</p>
+      <div class="size-options">
+        <button class="size active">L</button>
+        <button class="size">XL</button>
+        <button class="size">XS</button>
+      </div>
+
+      <p class="label">Color</p>
+      <div class="color-options">
+        <button class="color" style="background:#7B68EE;"></button>
+        <button class="color" style="background:#1a1a1a;"></button>
+        <button class="color" style="background:#B8860B;"></button>
+      </div>
+
+      <div class="actions">
+        <div class="qty">
+          <button>-</button>
+          <span>1</span>
+          <button>+</button>
+        </div>
+        <button class="btn-cart">Add To Cart</button>
+        <button class="btn-compare">+ Compare</button>
+      </div>
+
+      <hr class="line" />
+
+      <div class="meta">
+        <div class="meta-row">
+          <span class="key">SKU</span>
+          <span class="sep">:</span>
+          <span class="val">SS001</span>
+        </div>
+        <div class="meta-row">
+          <span class="key">Category</span>
+          <span class="sep">:</span>
+          <span class="val">Sofas</span>
+        </div>
+        <div class="meta-row">
+          <span class="key">Tags</span>
+          <span class="sep">:</span>
+          <span class="val">Sofa, Chair, Home, Shop</span>
+        </div>
+        <div class="meta-row">
+          <span class="key">Share</span>
+          <span class="sep">:</span>
+          <span class="val">
+            <img src="assets/images/akar-icons_facebook-fill.png">
+            <img src="assets/images/linkedin.png">
+            <img src="assets/images/tw.png">
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section">
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab active" data-target="tab-desc">Description</button>
+      <button class="tab" data-target="tab-info">Additional Information</button>
+      <button class="tab" data-target="tab-reviews">Reviews [5]</button>
+    </div>
+
+    <!-- Description Content -->
+    <div class="tab-content active" id="tab-desc">
+      <div class="content">
+        <p>Embodying the raw, wayward spirit of rock 'n' roll, the Kilburn portable active stereo speaker takes the
+          unmistakable look and sound of Marshall, unplugs the chords, and takes the show on the road.</p>
+        <p>Weighing in under 7 pounds, the Kilburn is a lightweight piece of vintage styled engineering. Setting the bar
+          as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced
+          audio which boasts a clear midrange and extended highs for a sound that is both articulate and pronounced. The
+          analogue knobs allow you to fine tune the controls to your personal preferences while the guitar-influenced
+          leather strap enables easy and stylish travel.</p>
+      </div>
+
+      <div class="images">
+        <div class="img-box">
+          <img src="assets/images/sofa1.png" alt="Sofa 1" />
+        </div>
+        <div class="img-box">
+          <img src="assets/images/sofa2.png" alt="Sofa 2" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Additional Information Content -->
+    <div class="tab-content" id="tab-info" style="display: none;">
+      <div class="content">
+        <p><strong>Weight:</strong> 15 lbs (6.8 kg)</p>
+        <p><strong>Dimensions:</strong> 72 x 35 x 31 inches</p>
+        <p><strong>Materials:</strong> Solid teak wood frame, premium fabric upholstery, high-density memory foam.</p>
+        <p><strong>Care Instructions:</strong> Wipe clean with a damp cloth. Professional cleaning recommended for stains.</p>
+        <p><strong>Warranty:</strong> 2-year limited manufacturer warranty covering structural defects.</p>
+      </div>
+    </div>
+
+    <!-- Reviews Content -->
+    <div class="tab-content" id="tab-reviews" style="display: none;">
+      <div class="content">
+        <div class="review" style="margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
+          <h4 style="margin-bottom: 8px; color: #1a1a1a;">Sarah J. <span style="color: #FFD700; margin-left: 10px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span></h4>
+          <p style="margin: 0; font-size: 14px; color: #666;">Absolutely love this sofa! It's incredibly comfortable and looks perfect in my modern living room. Highly recommended.</p>
+        </div>
+        <div class="review" style="margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
+          <h4 style="margin-bottom: 8px; color: #1a1a1a;">Michael T. <span style="color: #FFD700; margin-left: 10px;">&#9733;&#9733;&#9733;&#9733;&#9734;</span></h4>
+          <p style="margin: 0; font-size: 14px; color: #666;">Great quality for the price. The delivery was fast and the assembly was straightforward. Taking off one star because the box was slightly damaged.</p>
+        </div>
+        <div class="review" style="margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
+          <h4 style="margin-bottom: 8px; color: #1a1a1a;">Emily R. <span style="color: #FFD700; margin-left: 10px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span></h4>
+          <p style="margin: 0; font-size: 14px; color: #666;">The fabric is so soft, and the cushions are very supportive. Customer service was also very helpful when I had questions about the dimensions.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="related" id="related-section">
+
+    <h2>Related Products</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="img-wrap">
+          <img src="assets/images/syl.png" alt="Syltherine" />
+          <span class="badge red">-30%</span>
+        </div>
+        <h4>Syltherine</h4>
+        <p class="sub">Stylish cafe chair</p>
+        <div class="prices">
+          <span class="now">Rp 2.500.000</span>
+          <span class="old">Rp 3.500.000</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="img-wrap">
+          <img src="assets/images/lev.png" alt="Leviosa" />
+        </div>
+        <h4>Leviosa</h4>
+        <p class="sub">Stylish cafe chair</p>
+        <div class="prices">
+          <span class="now">Rp 2.500.000</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="img-wrap">
+          <img src="assets/images/lol.png" alt="Lolito" />
+          <span class="badge red">-50%</span>
+        </div>
+        <h4>Lolito</h4>
+        <p class="sub">Luxury big sofa</p>
+        <div class="prices">
+          <span class="now">Rp 7.000.000</span>
+          <span class="old">Rp 14.000.000</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="img-wrap">
+          <img src="assets/images/res.png" alt="Respira" />
+          <span class="badge green">New</span>
+        </div>
+        <h4>Respira</h4>
+        <p class="sub">Outdoor bar table and stool</p>
+        <div class="prices">
+          <span class="now">Rp 500.000</span>
+        </div>
+      </div>
+
+      <div class="card extra-card">
+        <div class="img-wrap">
+          <img src="assets/images/syl.png" alt="Syltherine" />
+        </div>
+        <h4>Aurora</h4>
+        <p class="sub">Modern dining chair</p>
+        <div class="prices">
+          <span class="now">Rp 1.750.000</span>
+          <span class="old">Rp 2.100.000</span>
+        </div>
+      </div>
+
+      <div class="card extra-card">
+        <div class="img-wrap">
+          <img src="assets/images/lev.png" alt="Leviosa" />
+          <span class="badge red">-20%</span>
+        </div>
+        <h4>Velora</h4>
+        <p class="sub">Contemporary lounge chair</p>
+        <div class="prices">
+          <span class="now">Rp 2.900.000</span>
+          <span class="old">Rp 3.650.000</span>
+        </div>
+      </div>
+
+      <div class="card extra-card">
+        <div class="img-wrap">
+          <img src="assets/images/lol.png" alt="Lolito" />
+        </div>
+        <h4>Finesse</h4>
+        <p class="sub">Luxury accent sofa</p>
+        <div class="prices">
+          <span class="now">Rp 6.500.000</span>
+        </div>
+      </div>
+
+      <div class="card extra-card">
+        <div class="img-wrap">
+          <img src="assets/images/res.png" alt="Respira" />
+          <span class="badge green">New</span>
+        </div>
+        <h4>Arcadia</h4>
+        <p class="sub">Minimalist coffee table</p>
+        <div class="prices">
+          <span class="now">Rp 650.000</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="show-more">
+      <button class="toggle-btn">Show More</button>
+      <button class="back-btn hidden">Back</button>
+    </div>
+
+  </div>
+  <footer class="footer">
+
+    <div class="footer-top">
+
+      <div class="col brand">
+        <h3>Funiro.</h3>
+        <p>400 University Drive Suite 200 Coral Gables,<br />FL 33134 USA</p>
+      </div>
+
+      <div class="col">
+        <h4>Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#">Payment Options</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Privacy Policies</a></li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <h4>Newsletter</h4>
+        <div class="newsletter">
+          <input type="email" placeholder="Enter Your Email Address" />
+          <button>SUBSCRIBE</button>
+        </div>
+      </div>
+
+    </div>
+
+    <hr />
+
+    <div class="footer-bottom">
+      <p>2023 furino. All rights reserved</p>
+    </div>
+
+  </footer>
+
+    <!-- Cart markup moved to cart.html; loaded dynamically at runtime -->
+
+  <script src="single_product.js"></script>
+</body>
+
+</html>

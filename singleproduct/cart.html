@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="cart.css" />
+    <title>Document</title>
+</head>
+<body>
+    <div class="cart-sidebar open" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <i id="close-cart-btn" class="fa-solid fa-xmark" style="color: #aaa; cursor: pointer;" title="Close Cart"></i>
+        </div>
+        <div class="cart-items">
+            <div class="cart-item">
+                <img src="assets/images/sofa1.png" alt="Asgaard sofa" />
+                <div class="cart-item-info">
+                    <p class="item-name">Asgaard sofa</p>
+                    <p class="item-qty">1 x <span class="price-gold">Rs. 250,000.00</span></p>
+                </div>
+                <i class="fa-solid fa-circle-xmark"></i>
+            </div>
+            <div class="cart-item">
+                <img src="assets/images/sofa2.png" alt="Casaliving Wood" />
+                <div class="cart-item-info">
+                    <p class="item-name">Casaliving Wood</p>
+                    <p class="item-qty">1 x <span class="price-gold">Rs. 270,000.00</span></p>
+                </div>
+                <i class="fa-solid fa-circle-xmark"></i>
+            </div>
+        </div>
+
+        <div style="flex-grow: 1;"></div>
+
+        <div class="cart-footer">
+            <div class="cart-subtotal">
+                <span>Subtotal</span>
+                <span class="subtotal-amt">Rs. 520,000.00</span>
+            </div>
+            <hr class="divider" style="margin: 20px 0;" />
+            <div class="cart-actions">
+                <button class="btn-cart-action">Cart</button>
+                <button class="btn-cart-action">Checkout</button>
+                <button class="btn-cart-action">Comparison</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
