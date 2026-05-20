@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             updateCartUI();
-            openCart();
+            openCart().then(updateCartUI);
         });
     }
 
@@ -166,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (sidebar) sidebar.classList.add('open');
         if (overlay) overlay.classList.add('open');
+        updateCartUI();
     }
 
     function closeCart(){
