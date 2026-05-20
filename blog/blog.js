@@ -233,3 +233,7 @@ searchInput.addEventListener('input',()=>{
 function openContact() {
     window.location.href = "contact.html";
 }
+
+function openAbout() {
+    window.location.href = "blog.html";
+}
