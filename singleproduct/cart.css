@@ -1,0 +1,82 @@
+.cart-sidebar {
+  position: fixed;
+  top: 0; right: -400px;
+  width: 400px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -4px 0 20px rgba(0,0,0,0.12);
+  z-index: 300;
+  padding: 24px 20px;
+  transition: right 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.cart-sidebar.open { right: 0; }
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eee;
+}
+.cart-header h3 { font-size: 18px; font-weight: 600; }
+.cart-items { display: flex; flex-direction: column; gap: 16px; }
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.cart-item img {
+  width: 70px; height: 70px;
+  object-fit: cover;
+  border-radius: 6px;
+  background: #f9f1e7;
+}
+.cart-item-info { flex: 1; }
+.item-name { font-size: 13px; font-weight: 600; color: #1a1a1a; margin-bottom: 4px; }
+.item-qty { font-size: 12px; color: #888; }
+.price-gold { color: #B88E2F; font-weight: 500; }
+.cart-item .fa-circle-xmark { color: #ccc; cursor: pointer; font-size: 18px; }
+.cart-item .fa-circle-xmark:hover { color: #e74c3c; }
+.cart-subtotal {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 0;
+  border-top: 1px solid #eee;
+}
+.subtotal-amt { color: #B88E2F; font-weight: 700; }
+.cart-actions { display: flex; gap: 10px; justify-content: space-between; }
+.btn-cart-action {
+  flex: 1;
+  padding: 6px 0;
+  border: 1px solid #000;
+  background: #fff;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #000;
+  cursor: pointer;
+  text-align: center;
+  font-family: inherit;
+}
+.btn-cart-action:hover { background: #000; color: #fff; }
+
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 299;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.cart-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
