@@ -228,3 +228,8 @@ searchBtn.addEventListener('click',()=>{
 searchInput.addEventListener('input',()=>{
     searchCategories();
 })
+
+
+function openContact() {
+    window.location.href = "contact.html";
+}
