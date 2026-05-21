@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop — Furniture</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="navbar">
+    <div class="container navbar__inner">
+
+      <a href="#" class="navbar__logo">Funiro<span>.</span></a>
+
+      <nav class="navbar__nav">
+        <a href="#">Home</a>
+        <a href="#" class="active">Shop</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </nav>
+
+      <div class="navbar__icons">
+        <!-- Search -->
+        <button title="Search">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <!-- Account -->
+        <button title="Account">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+        <!-- Wishlist -->
+        <button title="Wishlist">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        <!-- Cart -->
+        <button title="Cart">
+          <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ===================== HERO BANNER ===================== -->
+  <section class="hero" style="background-image: url('Rectangle 1.png');">
+    <div class="hero__content">
+      <h1>Shop</h1>
+      <nav class="breadcrumb">
+        <a href="#">Home</a>
+        <span class="breadcrumb__sep"></span>
+        <span>Shop</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ===================== FILTER BAR ===================== -->
+  <div class="filter-bar">
+    <div class="container filter-bar__inner">
+
+      <div class="filter-bar__left">
+        <button class="filter-btn">
+          <svg viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+          Filter
+        </button>
+
+        <div class="view-toggles">
+          <!-- Grid view (active) -->
+          <button class="view-btn active" title="Grid view">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
+          </button>
+          <!-- List view -->
+          <button class="view-btn" title="List view">
+            <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+        </div>
+
+        <p class="results-count">Showing <strong>1–16</strong> of 32 results</p>
+      </div>
+
+      <div class="filter-bar__right">
+        <label for="show-count">Show</label>
+        <select id="show-count" class="sort-select">
+          <option>16</option>
+          <option>24</option>
+          <option>32</option>
+        </select>
+
+        <label for="sort-by">Sort by</label>
+        <select id="sort-by" class="sort-select">
+          <option>Default</option>
+          <option>Price: Low to High</option>
+          <option>Price: High to Low</option>
+          <option>Newest</option>
+        </select>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===================== PRODUCTS ===================== -->
+  <main class="products-section">
+    <div class="container">
+      <div class="products-grid">
+
+        <!-- Card 1: Syltherine -30% -->
+        <article class="product-card">
+          <div class="product-card__img-wrap">
+            <img src="image 1.png"  loading="lazy" />
+            <span class="product-card__badge product-card__badge--discount">-30%</span>
+            <div class="product-card__overlay">
+              <button class="btn-add-cart">Add to cart</button>
+              <div class="overlay-actions">
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                  Share
+                </a>
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+                  Compare
+                </a>
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  Like
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <h2 class="product-card__name">Syltherine</h2>
+            <p class="product-card__desc">Stylish cafe chair</p>
+            <div class="product-card__pricing">
+              <span class="product-card__price">Rs 2.500.000</span>
+              <span class="product-card__original-price">Rs 3.500.000</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2: Leviosa -->
+        <article class="product-card">
+          <div class="product-card__img-wrap">
+            <img src="image 2.png" alt="Leviosa" loading="lazy" />
+            <div class="product-card__overlay">
+              <button class="btn-add-cart">Add to cart</button>
+              <div class="overlay-actions">
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                  Share
+                </a>
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+                  Compare
+                </a>
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  Like
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <h2 class="product-card__name">Leviosa</h2>
+            <p class="product-card__desc">Stylish cafe chair</p>
+            <div class="product-card__pricing">
+              <span class="product-card__price">Rs 2.500.000</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3: Lolito -50% -->
+        <article class="product-card">
+          <div class="product-card__img-wrap">
+            <img src="image 3.png" alt="Lolito" loading="lazy" />
+            <span class="product-card__badge product-card__badge--discount">-50%</span>
+            <div class="product-card__overlay">
+              <button class="btn-add-cart">Add to cart</button>
+              <div class="overlay-actions">
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                  Share
+                </a>
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+                  Compare
+                </a>
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  Like
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <h2 class="product-card__name">Lolito</h2>
+            <p class="product-card__desc">Luxury big sofa</p>
+            <div class="product-card__pricing">
+              <span class="product-card__price">Rs 7.000.000</span>
+              <span class="product-card__original-price">Rs 14.000.000</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 4: Respira NEW -->
+        <article class="product-card">
+          <div class="product-card__img-wrap">
+            <img src="image 4.png" alt="Respira" loading="lazy" />
+            <span class="product-card__badge product-card__badge--new">New</span>
+            <div class="product-card__overlay">
+              <button class="btn-add-cart">Add to cart</button>
+              <div class="overlay-actions">
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                  Share
+                </a>
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+                  Compare
+                </a>
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  Like
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <h2 class="product-card__name">Respira</h2>
+            <p class="product-card__desc">Outdoor bar table and stool</p>
+            <div class="product-card__pricing">
+              <span class="product-card__price">Rs 500.000</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 5: Grifo -->
+        <article class="product-card">
+          <div class="product-card__img-wrap">
+            <img src="image 1.png" alt="Grifo" loading="lazy" />
+            <div class="product-card__overlay">
+              <button class="btn-add-cart">Add to cart</button>
+              <div class="overlay-actions">
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                  Share
+                </a>
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+                  Compare
+                </a>
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  Like
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <h2 class="product-card__name">Grifo</h2>
+            <p class="product-card__desc">Night lamp</p>
+            <div class="product-card__pricing">
+              <span class="product-card__price">Rs 1.500.000</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 6: Muggo NEW -->
+        <article class="product-card">
+          <div class="product-card__img-wrap">
+            <img src="image 2.png" alt="Muggo" loading="lazy" />
+            <span class="product-card__badge product-card__badge--new">New</span>
+            <div class="product-card__overlay">
+              <button class="btn-add-cart">Add to cart</button>
+              <div class="overlay-actions">
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                  Share
+                </a>
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+                  Compare
+                </a>
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  Like
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <h2 class="product-card__name">Muggo</h2>
+            <p class="product-card__desc">Small mug</p>
+            <div class="product-card__pricing">
+              <span class="product-card__price">Rs 150.000</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 7: Pingky -50% -->
+        <article class="product-card">
+          <div class="product-card__img-wrap">
+            <img src="image 3.png" alt="Pingky" loading="lazy" />
+            <span class="product-card__badge product-card__badge--discount">-50%</span>
+            <div class="product-card__overlay">
+              <button class="btn-add-cart">Add to cart</button>
+              <div class="overlay-actions">
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                  Share
+                </a>
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+                  Compare
+                </a>
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  Like
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <h2 class="product-card__name">Pingky</h2>
+            <p class="product-card__desc">Cute bed set</p>
+            <div class="product-card__pricing">
+              <span class="product-card__price">Rs 7.000.000</span>
+              <span class="product-card__original-price">Rs 14.000.000</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 8: Potyvase NEW -->
+        <article class="product-card">
+          <div class="product-card__img-wrap">
+            <img src="image 4.png" alt="Potyvase" loading="lazy" />
+            <span class="product-card__badge product-card__badge--new">New</span>
+            <div class="product-card__overlay">
+              <button class="btn-add-cart">Add to cart</button>
+              <div class="overlay-actions">
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                  Share
+                </a>
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+                  Compare
+                </a>
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  Like
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <h2 class="product-card__name">Potyvase</h2>
+            <p class="product-card__desc">Minimalist flower pot</p>
+            <div class="product-card__pricing">
+              <span class="product-card__price">Rs 500.000</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 9 -->
+        <article class="product-card">
+          <div class="product-card__img-wrap">
+            <img src="image 1.png" alt="Desk Chair" loading="lazy" />
+            <div class="product-card__overlay">
+              <button class="btn-add-cart">Add to cart</button>
+              <div class="overlay-actions">
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                  Share
+                </a>
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+                  Compare
+                </a>
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  Like
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <h2 class="product-card__name">Caserta</h2>
+            <p class="product-card__desc">Ergonomic desk chair</p>
+            <div class="product-card__pricing">
+              <span class="product-card__price">Rs 3.200.000</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 10: -30% -->
+        <article class="product-card">
+          <div class="product-card__img-wrap">
+            <img src="image 2.png" alt="Astera" loading="lazy" />
+            <span class="product-card__badge product-card__badge--discount">-30%</span>
+            <div class="product-card__overlay">
+              <button class="btn-add-cart">Add to cart</button>
+              <div class="overlay-actions">
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                  Share
+                </a>
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+                  Compare
+                </a>
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  Like
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <h2 class="product-card__name">Astera</h2>
+            <p class="product-card__desc">Modern coffee table</p>
+            <div class="product-card__pricing">
+              <span class="product-card__price">Rs 4.200.000</span>
+              <span class="product-card__original-price">Rs 6.000.000</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 11 -->
+        <article class="product-card">
+          <div class="product-card__img-wrap">
+            <img src="image 3.png" alt="Dania" loading="lazy" />
+            <div class="product-card__overlay">
+              <button class="btn-add-cart">Add to cart</button>
+              <div class="overlay-actions">
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                  Share
+                </a>
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+                  Compare
+                </a>
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  Like
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <h2 class="product-card__name">Dania</h2>
+            <p class="product-card__desc">Cozy armchair</p>
+            <div class="product-card__pricing">
+              <span class="product-card__price">Rs 3.800.000</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 12: NEW -->
+        <article class="product-card">
+          <div class="product-card__img-wrap">
+            <img src="image 4.png" alt="Virgo" loading="lazy" />
+            <span class="product-card__badge product-card__badge--new">New</span>
+            <div class="product-card__overlay">
+              <button class="btn-add-cart">Add to cart</button>
+              <div class="overlay-actions">
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                  Share
+                </a>
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+                  Compare
+                </a>
+                <a href="#" class="overlay-action">
+                  <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  Like
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="product-card__body">
+            <h2 class="product-card__name">Virgo</h2>
+            <p class="product-card__desc">Wooden dining set</p>
+            <div class="product-card__pricing">
+              <span class="product-card__price">Rs 6.500.000</span>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- /products-grid -->
+
+      <!-- Pagination -->
+      <nav class="pagination" aria-label="Page navigation">
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button class="page-btn">3</button>
+        <button class="page-btn page-btn--next">Next</button>
+      </nav>
+
+    </div>
+  </main>
+
+  <!-- ===================== FEATURES ===================== -->
+  <section class="features">
+    <div class="container">
+      <div class="features__grid">
+
+        <div class="feature-item">
+          <div class="feature-item__icon">
+            <svg viewBox="0 0 48 48">
+              <path d="M24 6 L30 18 L44 20 L34 30 L36 44 L24 38 L12 44 L14 30 L4 20 L18 18 Z"/>
+            </svg>
+          </div>
+          <div class="feature-item__text">
+            <h3>High Quality</h3>
+            <p>crafted from top materials</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-item__icon">
+            <svg viewBox="0 0 48 48">
+              <circle cx="24" cy="24" r="18"/>
+              <polyline points="16,24 21,30 32,18"/>
+            </svg>
+          </div>
+          <div class="feature-item__text">
+            <h3>Warranty Protection</h3>
+            <p>Over 2 years</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-item__icon">
+            <svg viewBox="0 0 48 48">
+              <rect x="6" y="14" width="36" height="24" rx="2"/>
+              <polyline points="6,20 24,30 42,20"/>
+            </svg>
+          </div>
+          <div class="feature-item__text">
+            <h3>Free Shipping</h3>
+            <p>Order over 150 $</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-item__icon">
+            <svg viewBox="0 0 48 48">
+              <circle cx="24" cy="24" r="18"/>
+              <path d="M20 20 Q20 14 24 14 Q28 14 28 18 Q28 22 24 24 L24 28"/>
+              <circle cx="24" cy="33" r="1.5" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="feature-item__text">
+            <h3>24 / 7 Support</h3>
+            <p>Dedicated support</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+
+        <!-- Brand -->
+        <div>
+          <span class="footer__brand-name">Funiro.</span>
+          <p class="footer__address">400 University Drive Suite 200 Coral Gables,<br>FL 33134 USA</p>
+        </div>
+
+        <!-- Links -->
+        <div>
+          <p class="footer__col-title">Links</p>
+          <ul class="footer__links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Help -->
+        <div>
+          <p class="footer__col-title">Help</p>
+          <ul class="footer__links">
+            <li><a href="#">Payment Options</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Privacy Policies</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div>
+          <p class="footer__col-title">Newsletter</p>
+          <div class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Enter Your Email Address" />
+            <button class="newsletter-submit">SUBSCRIBE</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <p>2023 Funiro. All rights reserved</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
