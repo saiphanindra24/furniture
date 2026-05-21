@@ -12,27 +12,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="../assets/navbar.css">
 </head>
 <body>
 
-    <!-- Header Section -->
-    <header class="header">
-        <div class="header-container">
-            <div class="logo">
-                <img src="./images/logo.png" alt="Furniro Logo" onerror="this.src='https://via.placeholder.com/40x40?text=Logo'">
-                <h2>Furniro</h2>
-            </div>
-            <nav class="nav-links">
-                <a href="#">Home</a>
-                <a href="#">Shop</a>
-                <a href="../blog/blog.html">About</a>
-                <a href="contact.html">Contact</a>
+    <header class="site-navbar">
+        <div class="site-navbar__inner">
+            <a href="../Home/Home.html" class="site-navbar__brand">
+                <img src="../assets/logo.png" alt="Furniro logo">
+                <span>Furniro</span>
+            </a>
+            <nav class="site-navbar__menu" aria-label="Primary navigation">
+                <a href="../Home/Home.html" class="site-navbar__link">Home</a>
+                <a href="../Shop/index.html" class="site-navbar__link">Shop</a>
+                <a href="../blog/blog.html" class="site-navbar__link">About</a>
+                <a href="contact.html" class="site-navbar__link active">Contact</a>
             </nav>
-            <div class="header-icons">
-                <a href="#"><i class="fa-regular fa-user"></i></a>
-                <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                <a href="#"><i class="fa-regular fa-heart"></i></a>
-                <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+            <div class="site-navbar__actions">
+                <a href="#" class="site-navbar__icon" aria-label="Account"><i class="fa-regular fa-user"></i></a>
+                <a href="#" class="site-navbar__icon" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href="#" class="site-navbar__icon" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></a>
+                <a href="#" class="site-navbar__icon" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
         </div>
     </header>

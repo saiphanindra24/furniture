@@ -5,20 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shop — Furniture</title>
   <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="../assets/navbar.css" />
 </head>
 <body>
 
-  <!-- ===================== NAVBAR ===================== -->
-  <header class="navbar">
-    <div class="container navbar__inner">
+  <header class="site-navbar">
+    <div class="site-navbar__inner">
+      <a href="../Home/Home.html" class="site-navbar__brand">
+        <img src="../assets/logo.png" alt="Furniro logo">
+        <span>Furniro</span>
+      </a>
 
-      <a href="#" class="navbar__logo">Funiro<span>.</span></a>
-
-      <nav class="navbar__nav">
-        <a href="#">Home</a>
-        <a href="#" class="active">Shop</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
+      <nav class="site-navbar__menu" aria-label="Primary navigation">
+        <a href="../Home/Home.html" class="site-navbar__link">Home</a>
+        <a href="index.html" class="site-navbar__link active">Shop</a>
+        <a href="../blog/blog.html" class="site-navbar__link">About</a>
+        <a href="../checkout/contact.html" class="site-navbar__link">Contact</a>
       </nav>
 
       <div class="navbar__icons">

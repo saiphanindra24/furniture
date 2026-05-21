@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Product Comparison – Furniro</title>
   <link rel="stylesheet" href="PC.css" />
+  <link rel="stylesheet" href="../assets/navbar.css" />
 </head>
 <body>
 
@@ -23,46 +24,36 @@
 <!-- ══════════════════════════════════════════════
      NAVBAR
 ══════════════════════════════════════════════ -->
-<nav class="navbar">
+<header class="site-navbar">
+  <div class="site-navbar__inner">
+    <a href="../Home/Home.html" class="site-navbar__brand">
+      <img src="../assets/logo.png" alt="Furniro logo">
+      <span>Furniro</span>
+    </a>
 
-  <div class="nav-logo">
-    <!-- Furniro logomark -->
-    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M20 4L36 32H4L20 4Z" fill="#b88e2f" opacity=".85"/>
-      <path d="M20 4L36 32H4L20 4Z" fill="none" stroke="#7a5c1e" stroke-width="1.5"/>
-      <line x1="20" y1="14" x2="20" y2="32" stroke="#fff" stroke-width="1.5" opacity=".6"/>
-    </svg>
-    <span class="nav-logo-text">Furniro</span>
+    <nav class="site-navbar__menu" aria-label="Primary navigation">
+      <a href="../Home/Home.html" class="site-navbar__link">Home</a>
+      <a href="../Shop/index.html" class="site-navbar__link active">Shop</a>
+      <a href="../blog/blog.html" class="site-navbar__link">About</a>
+      <a href="../checkout/contact.html" class="site-navbar__link">Contact</a>
+    </nav>
+
+    <div class="site-navbar__actions">
+      <a href="#" class="site-navbar__icon" aria-label="Account">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      </a>
+      <a href="#" class="site-navbar__icon" aria-label="Search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+      </a>
+      <a href="#" class="site-navbar__icon" aria-label="Wishlist">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </a>
+      <a href="#" class="site-navbar__icon" aria-label="Cart">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      </a>
+    </div>
   </div>
-
-  <ul class="nav-links">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Shop</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Contact</a></li>
-  </ul>
-
-  <div class="nav-icons">
-    <!-- User -->
-    <svg viewBox="0 0 24 24" stroke-width="1.8">
-      <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-    </svg>
-    <!-- Search -->
-    <svg viewBox="0 0 24 24" stroke-width="1.8">
-      <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/>
-    </svg>
-    <!-- Heart -->
-    <svg viewBox="0 0 24 24" stroke-width="1.8">
-      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-    </svg>
-    <!-- Cart -->
-    <svg viewBox="0 0 24 24" stroke-width="1.8">
-      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/>
-      <path d="M16 10a4 4 0 0 1-8 0"/>
-    </svg>
-  </div>
-
-</nav>
+</header>
 
 <!-- ══════════════════════════════════════════════
      HERO BANNER
