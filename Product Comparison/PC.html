@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Comparison – Furniro</title>
+  <link rel="stylesheet" href="PC.css" />
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     SVG Defs (half-star gradient)
+══════════════════════════════════════════════ -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="halfGrad">
+      <stop offset="50%" stop-color="#b88e2f"/>
+      <stop offset="50%" stop-color="#e5ddd3"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<!-- ══════════════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════════════ -->
+<nav class="navbar">
+
+  <div class="nav-logo">
+    <!-- Furniro logomark -->
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 4L36 32H4L20 4Z" fill="#b88e2f" opacity=".85"/>
+      <path d="M20 4L36 32H4L20 4Z" fill="none" stroke="#7a5c1e" stroke-width="1.5"/>
+      <line x1="20" y1="14" x2="20" y2="32" stroke="#fff" stroke-width="1.5" opacity=".6"/>
+    </svg>
+    <span class="nav-logo-text">Furniro</span>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Shop</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+
+  <div class="nav-icons">
+    <!-- User -->
+    <svg viewBox="0 0 24 24" stroke-width="1.8">
+      <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+    </svg>
+    <!-- Search -->
+    <svg viewBox="0 0 24 24" stroke-width="1.8">
+      <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/>
+    </svg>
+    <!-- Heart -->
+    <svg viewBox="0 0 24 24" stroke-width="1.8">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+    </svg>
+    <!-- Cart -->
+    <svg viewBox="0 0 24 24" stroke-width="1.8">
+      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/>
+      <path d="M16 10a4 4 0 0 1-8 0"/>
+    </svg>
+  </div>
+
+</nav>
+
+<!-- ══════════════════════════════════════════════
+     HERO BANNER
+══════════════════════════════════════════════ -->
+<section class="hero" style="background-image: url('Rectangle\ 1.png'); background-size: cover; background-position: center;">
+  <!-- decorative logo mark -->
+  <svg class="hero-logo-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M24 4L44 40H4L24 4Z" fill="#b88e2f"/>
+    <path d="M24 4L44 40H4L24 4Z" fill="none" stroke="#7a5c1e" stroke-width="1.5"/>
+    <line x1="24" y1="16" x2="24" y2="40" stroke="#fff" stroke-width="1.5" opacity=".6"/>
+  </svg>
+
+  <h1>Product Comparison</h1>
+
+  <nav class="breadcrumb">
+    <a href="#">Home</a>
+    <span>›</span>
+    <span>Comparison</span>
+  </nav>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     MAIN CONTENT
+══════════════════════════════════════════════ -->
+<main class="main-content">
+
+  <!-- ── Product Header Row ──────────────────── -->
+  <div class="section-header">
+
+    <!-- Left: Go to product page -->
+    <div class="view-more-col">
+      <p>Go to Product page for more Products</p>
+      <a href="#" class="btn-view-more">View More</a>
+    </div>
+
+    <!-- Products -->
+    <div class="products-row">
+
+      <!-- Product 1: Asgaard Sofa -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <span class="product-badge">Best Seller</span>
+          <img
+            src="Group 156.png"
+            alt="Asgaard Sofa – grey L-shaped sectional sofa with wooden legs"
+            loading="lazy"
+          />
+        </div>
+        <div class="product-name">Asgaard Sofa</div>
+        <div class="product-price">Rs. 250,000.00</div>
+        <div class="product-rating">
+          <div class="stars">
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <svg class="star half" viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          </div>
+          <span class="rating-count">4.7 &nbsp;|&nbsp; 204 Reviews</span>
+        </div>
+      </div>
+
+      <!-- Product 2: Outdoor Sofa Set -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img
+            src="Group 157.png"
+            alt="Outdoor Sofa Set – 3-piece grey wicker patio sofa set"
+            loading="lazy"
+          />
+        </div>
+        <div class="product-name">Outdoor Sofa Set</div>
+        <div class="product-price">Rs. 224,000.00</div>
+        <div class="product-rating">
+          <div class="stars">
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            <svg class="star empty" viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          </div>
+          <span class="rating-count">4.2 &nbsp;|&nbsp; 145 Reviews</span>
+        </div>
+      </div>
+
+      <!-- Add a Product -->
+      <div class="add-product-card">
+        <svg viewBox="0 0 24 24" stroke-width="1.5" fill="none">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="8" x2="12" y2="16"/>
+          <line x1="8" y1="12" x2="16" y2="12"/>
+        </svg>
+        <p>Add A Product</p>
+        <button class="btn-choose">
+          Choose a Product
+          <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" style="width:14px;height:14px">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+      </div>
+
+    </div><!-- /products-row -->
+  </div><!-- /section-header -->
+
+
+  <!-- ── Comparison Table ────────────────────── -->
+  <div class="comparison-table-wrap">
+    <table class="comparison-table">
+
+      <!-- ─── GENERAL ─────────────────────── -->
+      <tr class="section-row">
+        <td colspan="3"><span class="section-label">General</span></td>
+      </tr>
+      <tr class="attr-row">
+        <td class="attr-name">Sales Package</td>
+        <td class="attr-val">1 sectional sofa</td>
+        <td class="attr-val">1 Three Seater, 2 Single Seater</td>
+      </tr>
+      <tr class="attr-row">
+        <td class="attr-name">Model Number</td>
+        <td class="attr-val">TFCBLIGRBL6SRHS</td>
+        <td class="attr-val">DTUBLIGRBL56B</td>
+      </tr>
+      <tr class="attr-row">
+        <td class="attr-name">Secondary Material</td>
+        <td class="attr-val">Solid Wood</td>
+        <td class="attr-val">Solid Wood</td>
+      </tr>
+      <tr class="attr-row">
+        <td class="attr-name">Configuration</td>
+        <td class="attr-val">L-shaped</td>
+        <td class="attr-val">L-shaped</td>
+      </tr>
+      <tr class="attr-row">
+        <td class="attr-name">Upholstery Material</td>
+        <td class="attr-val">Fabric + Cotton</td>
+        <td class="attr-val">Fabric + Cotton</td>
+      </tr>
+      <tr class="attr-row">
+        <td class="attr-name">Upholstery Color</td>
+        <td class="attr-val">Bright Grey &amp; Lion</td>
+        <td class="attr-val">Bright Grey &amp; Lion</td>
+      </tr>
+
+      <!-- ─── PRODUCT ─────────────────────── -->
+      <tr class="section-row">
+        <td colspan="3"><span class="section-label">Product</span></td>
+      </tr>
+      <tr class="attr-row">
+        <td class="attr-name">Filling Material</td>
+        <td class="attr-val">Foam</td>
+        <td class="attr-val">Matte</td>
+      </tr>
+      <tr class="attr-row">
+        <td class="attr-name">Finish Type</td>
+        <td class="attr-val">Bright Grey &amp; Lion</td>
+        <td class="attr-val">Bright Grey &amp; Lion</td>
+      </tr>
+      <tr class="attr-row">
+        <td class="attr-name">Adjustable Headrest</td>
+        <td class="attr-val"><span class="cross">✕</span> No</td>
+        <td class="attr-val"><span class="check">✓</span> Yes</td>
+      </tr>
+      <tr class="attr-row">
+        <td class="attr-name">Maximum Load Capacity</td>
+        <td class="attr-val">280 KG</td>
+        <td class="attr-val highlight">300 KG</td>
+      </tr>
+      <tr class="attr-row">
+        <td class="attr-name">Origin of Manufacture</td>
+        <td class="attr-val">India</td>
+        <td class="attr-val">India</td>
+      </tr>
+
+      <!-- ─── DIMENSIONS ─────────────────── -->
+      <tr class="section-row">
+        <td colspan="3"><span class="section-label">Dimensions</span></td>
+      </tr>
+      <tr class="attr-row">
+        <td class="attr-name">Width</td>
+        <td class="attr-val">265.32 cm</td>
+        <td class="attr-val">265.32 cm</td>
+      </tr>
+      <tr class="attr-row">
+        <td class="attr-name">Height</td>
+        <td class="attr-val">76 cm</td>
+        <td class="attr-val">76 cm</td>
+      </tr>
+      <tr class="attr-row">
+        <td class="attr-name">Depth</td>
+        <td class="attr-val">167.76 cm</td>
+        <td class="attr-val">167.76 cm</td>
+      </tr>
+      <tr class="attr-row">
+        <td class="attr-name">Weight</td>
+        <td class="attr-val">45 KG</td>
+        <td class="attr-val">65 KG</td>
+      </tr>
+      <tr class="attr-row">
+        <td class="attr-name">Seat Height</td>
+        <td class="attr-val">41.52 cm</td>
+        <td class="attr-val">41.52 cm</td>
+      </tr>
+      <tr class="attr-row">
+        <td class="attr-name">Leg Height</td>
+        <td class="attr-val">5.46 cm</td>
+        <td class="attr-val">5.46 cm</td>
+      </tr>
+
+      <!-- ─── WARRANTY ───────────────────── -->
+      <tr class="section-row">
+        <td colspan="3"><span class="section-label">Warranty</span></td>
+      </tr>
+      <tr class="attr-row">
+        <td class="attr-name">Warranty Summary</td>
+        <td class="attr-val">1 Year Manufacturing Warranty</td>
+        <td class="attr-val highlight">1.2 Year Manufacturing Warranty</td>
+      </tr>
+      <tr class="attr-row">
+        <td class="attr-name">Warranty Service Type</td>
+        <td class="attr-val">For Warranty Claims or Any Product Related Issues Please Email at <em>operations@trevifurniture.com</em></td>
+        <td class="attr-val">For Warranty Claims or Any Product Related Issues Please Email at <em>support@xyz.com</em></td>
+      </tr>
+      <tr class="attr-row">
+        <td class="attr-name">Covered in Warranty</td>
+        <td class="attr-val">Warranty Against Manufacturing Defect</td>
+        <td class="attr-val">Warranty of the product is limited to manufacturing defects only.</td>
+      </tr>
+      <tr class="attr-row">
+        <td class="attr-name">Not Covered in Warranty</td>
+        <td class="attr-val">The Warranty Does Not Cover Damages Due To Usage Of The Product Beyond Its Intended Use And Wear &amp; Tear In The Natural Course Of Product Usage.</td>
+        <td class="attr-val">The Warranty Does Not Cover Damages Due To Usage Of The Product Beyond Its Intended Use And Wear &amp; Tear In The Natural Course Of Product Usage.</td>
+      </tr>
+      <tr class="attr-row">
+        <td class="attr-name">Domestic Warranty</td>
+        <td class="attr-val">1 Year</td>
+        <td class="attr-val">3 Months</td>
+      </tr>
+
+      <!-- ─── CTA Row ─────────────────────── -->
+      <tr class="cta-row">
+        <td></td>
+        <td><button class="btn-cart">Add To Cart</button></td>
+        <td><button class="btn-cart">Add To Cart</button></td>
+      </tr>
+
+    </table>
+  </div><!-- /comparison-table-wrap -->
+
+
+  <!-- ── Features Banner ────────────────────── -->
+  <div class="features-banner">
+
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" stroke-width="1.8">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <div class="feature-text">
+        <h4>High Quality</h4>
+        <p>Crafted from top materials</p>
+      </div>
+    </div>
+
+    <div class="feature-divider"></div>
+
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" stroke-width="1.8">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+          <polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+      </div>
+      <div class="feature-text">
+        <h4>Warranty Protection</h4>
+        <p>Over 2 years</p>
+      </div>
+    </div>
+
+    <div class="feature-divider"></div>
+
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" stroke-width="1.8">
+          <rect x="1" y="3" width="15" height="13" rx="2"/>
+          <path d="M16 8h4l3 3v5h-7V8z"/>
+          <circle cx="5.5" cy="18.5" r="2.5"/>
+          <circle cx="18.5" cy="18.5" r="2.5"/>
+        </svg>
+      </div>
+      <div class="feature-text">
+        <h4>Free Shipping</h4>
+        <p>Order over 150 $</p>
+      </div>
+    </div>
+
+    <div class="feature-divider"></div>
+
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" stroke-width="1.8">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6 6l.9-.9a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+      </div>
+      <div class="feature-text">
+        <h4>24 / 7 Support</h4>
+        <p>Dedicated support</p>
+      </div>
+    </div>
+
+  </div><!-- /features-banner -->
+
+</main>
+
+
+<!-- ══════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+
+    <!-- Brand -->
+    <div>
+      <div class="footer-brand-name">Funiro.</div>
+      <p class="footer-address">400 University Drive Suite 200 Coral Gables,<br>FL 33134 USA</p>
+    </div>
+
+    <!-- Links -->
+    <div class="footer-col">
+      <h5>Links</h5>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Help -->
+    <div class="footer-col">
+      <h5>Help</h5>
+      <ul>
+        <li><a href="#">Payment Options</a></li>
+        <li><a href="#">Returns</a></li>
+        <li><a href="#">Privacy Policies</a></li>
+      </ul>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="footer-col">
+      <h5>Newsletter</h5>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Enter Your Email Address" />
+        <button type="button">Subscribe</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <span>2023 Furino. All rights reserved</span>
+  </div>
+</footer>
+
+</body>
+</html>
