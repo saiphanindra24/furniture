@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Secure checkout payment page for Furniro premium furniture orders. Secure 256-bit SSL encrypted payment.">
+    <title>Furniro Payments</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="payment.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="brand">
+                <img src="logo.png" alt="Furniro Logo" class="brand-logo" onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=50&auto=format&fit=crop&q=80'">
+                <h1 id="main-heading">Furniro Payment</h1>
+            </div>
+            <div class="security-badge" id="ssl-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="secure-icon">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <span>256-bit SSL Secured</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-container">
+        <div class="checkout-layout">
+            
+            <!-- Left Column: Order Summary & Coupon -->
+            <section class="checkout-column summary-column">
+                
+                <!-- Order Summary Header -->
+                <div class="section-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="title-icon">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <h2>Order Summary</h2>
+                </div>
+
+                <!-- Order Items -->
+                <div class="order-items" id="order-items-container">
+                    <!-- Dynamic cart items will be loaded by JavaScript -->
+                </div>
+
+                <!-- Apply Coupon Section -->
+                <div class="coupon-section">
+                    <div class="coupon-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="coupon-icon-label">
+                            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                            <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                        </svg>
+                        <span>Apply Coupon</span>
+                    </div>
+                    <div class="coupon-input-group">
+                        <input type="text" id="coupon-code" placeholder="Enter coupon code" aria-label="Coupon code input">
+                        <button class="btn btn-primary" id="apply-coupon-btn">Apply</button>
+                    </div>
+                    <div class="coupon-suggestions">
+                        <span>Try: </span>
+                        <button class="suggestion-tag" id="tag-save10">SAVE10</button>
+                        <button class="suggestion-tag" id="tag-flat20">FLAT20</button>
+                        <button class="suggestion-tag" id="tag-freeship">FREESHIP</button>
+                    </div>
+                    <div class="coupon-status" id="coupon-msg"></div>
+                </div>
+
+                <!-- Price Breakdowns -->
+                <div class="price-breakdown">
+                    <div class="breakdown-row">
+                        <span class="label">Subtotal</span>
+                        <span class="value" id="subtotal-val">Rp. 26,50,000.00</span>
+                    </div>
+                    <div class="breakdown-row">
+                        <span class="label">Shipping</span>
+                        <span class="value" id="shipping-val">Rp. 15,000.00</span>
+                    </div>
+                    <div class="breakdown-row discount-row" id="discount-display-row" style="display: none;">
+                        <span class="label">Coupon Discount</span>
+                        <span class="value discount-value" id="discount-val">-Rp. 0.00</span>
+                    </div>
+                    <div class="breakdown-row">
+                        <span class="label">Tax (10%)</span>
+                        <span class="value" id="tax-val">Rp. 2,65,000.00</span>
+                    </div>
+                    <div class="total-row">
+                        <span class="total-label">Total</span>
+                        <span class="total-value" id="total-val">Rp. 29,30,000.00</span>
+                    </div>
+                </div>
+
+                <!-- Saved Cards Section -->
+                <div class="saved-cards-section">
+                    <div class="saved-cards-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="title-icon">
+                            <rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="2" y1="10" x2="22" y2="10"></line>
+                        </svg>
+                        <span>Saved Cards</span>
+                    </div>
+                    <label class="saved-card-option" for="saved-card-1">
+                        <input type="radio" name="payment-method-select" id="saved-card-1" checked>
+                        <span class="radio-custom"></span>
+                        <div class="saved-card-logo">
+                            <svg class="visa-mini-svg" viewBox="0 0 24 15" width="30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.74 13.92H12.98L14.38 5.4H12.14L10.74 13.92ZM18.9 5.56C18.42 5.36 17.66 5.18 16.74 5.18C14.48 5.18 12.88 6.38 12.86 8.1C12.84 9.38 13.98 10.08 14.86 10.5C15.76 10.94 16.06 11.22 16.06 11.62C16.06 12.22 15.34 12.5 14.68 12.5C13.66 12.5 13.04 12.2 12.58 12L12.14 14.04C12.7 14.3 13.78 14.52 14.9 14.52C17.28 14.52 18.84 13.34 18.88 11.52C18.9 10.02 17.98 9.2 16.64 8.56C15.86 8.18 15.42 7.88 15.44 7.42C15.44 7.02 15.9 6.58 16.8 6.58C17.62 6.56 18.24 6.74 18.72 6.96L19.16 5L18.9 5.56ZM23.44 5.4H21.56C20.98 5.4 20.54 5.74 20.3 6.32L17.26 13.92H19.6L20.06 12.62H22.92L23.2 13.92H25.26L23.44 5.4ZM20.7 10.84C20.88 10.36 21.58 8.46 21.58 8.46C21.56 8.48 21.78 7.92 21.9 7.56L22.56 10.84H20.7ZM8.32 5.4L6.16 11.2L5.92 1.9H3.56L0.26 13.92H2.54L6.96 5.4H8.32Z" fill="#1A1F71"/>
+                            </svg>
+                        </div>
+                        <div class="saved-card-info">
+                            <span class="card-mask">•••• •••• •••• 4242</span>
+                            <span class="card-owner">Guest User</span>
+                        </div>
+                    </label>
+                </div>
+            </section>
+
+            <!-- Right Column: Payment Details -->
+            <section class="checkout-column payment-column">
+                
+                <!-- Payment Details Header -->
+                <div class="section-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="title-icon">
+                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <h2>Payment Details</h2>
+                </div>
+
+                <!-- Payment Methods Navigation Tabs -->
+                <nav class="payment-tabs" aria-label="Payment method selector">
+                    <button class="tab-btn active" data-tab="card" id="tab-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="tab-icon">
+                            <rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="2" y1="10" x2="22" y2="10"></line>
+                        </svg>
+                        <span>Card</span>
+                    </button>
+                    <button class="tab-btn" data-tab="upi" id="tab-upi">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="tab-icon">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                        <span>UPI</span>
+                    </button>
+                    <button class="tab-btn" data-tab="netbanking" id="tab-netbanking">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="tab-icon">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="9" y1="3" x2="9" y2="21"></line>
+                        </svg>
+                        <span>Net Banking</span>
+                    </button>
+                    <button class="tab-btn" data-tab="wallet" id="tab-wallet">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="tab-icon">
+                            <path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"></path>
+                            <path d="M4 6v12a2 2 0 0 0 2 2h14v-4"></path>
+                            <path d="M18 12a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h4v-6z"></path>
+                        </svg>
+                        <span>Wallet</span>
+                    </button>
+                    <button class="tab-btn" data-tab="emi" id="tab-emi">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="tab-icon">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <span>EMI</span>
+                    </button>
+                </nav>
+
+                <!-- Card Tab Panel Content -->
+                <div class="tab-content card-tab-panel" id="panel-card">
+                    <!-- Premium Visual Credit Card -->
+                    <div class="credit-card-wrapper">
+                        <div class="credit-card-mockup" id="virtual-card">
+                            <div class="card-glow"></div>
+                            <div class="card-front">
+                                <div class="card-header">
+                                    <div class="card-chip">
+                                        <!-- Animated Gold Chip SVG -->
+                                        <svg viewBox="0 0 50 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="chip-svg">
+                                            <rect width="50" height="40" rx="6" fill="url(#chipGradient)"/>
+                                            <path d="M0 13H15V27H0V13Z" stroke="#4A3419" stroke-width="0.8"/>
+                                            <path d="M35 13H50V27H35V13Z" stroke="#4A3419" stroke-width="0.8"/>
+                                            <path d="M15 0V13H35V0H15Z" stroke="#4A3419" stroke-width="0.8"/>
+                                            <path d="M15 27V40H35V27H15Z" stroke="#4A3419" stroke-width="0.8"/>
+                                            <path d="M25 0V40" stroke="#4A3419" stroke-width="0.8"/>
+                                            <path d="M0 20H50" stroke="#4A3419" stroke-width="0.8"/>
+                                            <rect x="18" y="10" width="14" height="20" rx="3" fill="#D4AF37" stroke="#4A3419" stroke-width="0.5"/>
+                                            <defs>
+                                                <linearGradient id="chipGradient" x1="0" y1="0" x2="50" y2="40" gradientUnits="userSpaceOnUse">
+                                                    <stop stop-color="#FFEFA6"/>
+                                                    <stop offset="0.5" stop-color="#D4AF37"/>
+                                                    <stop offset="1" stop-color="#AA7C11"/>
+                                                </linearGradient>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                    <div class="card-brand-logo">
+                                        <!-- Visa SVG Logo -->
+                                        <svg viewBox="0 0 120 38" fill="white" xmlns="http://www.w3.org/2000/svg" class="visa-logo-svg">
+                                            <path d="M43.7 36.6h9.1L58.5 2H49.4L43.7 36.6zM74.8 2.6c-1.9-.8-4.9-1.6-8.6-1.6-9.1 0-15.5 4.8-15.5 11.7 0 5.1 4.6 7.9 8.1 9.6 3.6 1.7 4.8 2.8 4.8 4.4 0 2.4-2.9 3.5-5.6 3.5-3.7 0-5.7-.6-8.7-1.9l-1.2-.6-1.3 8.1c2.2 1 6.3 1.9 10.6 1.9 9.6 0 15.9-4.8 15.9-12.2 0-4.1-2.4-7.2-7.8-9.8-3.3-1.6-5.3-2.7-5.3-4.4 0-1.5 1.7-3.1 5.3-3.1 3-.1 5.2.6 6.9 1.3l.8.4 1.7-7.7zM93.3 2H86.2c-2.2 0-3.9 1.3-4.8 3.4L68.7 36.6h9.5L80.1 31h11.6l1.1 5.6h8.4L93.3 2zm-11.4 22L86.8 10l3 14H81.9zM33.6 2h-9.3c-2.9 0-5.1 1.7-6.3 4.2L.5 36.6H10l1.9-5.2h11.5l1.1 5.2h8.3L33.6 2zm-19.8 23L18 13.2 20.4 25H13.8z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <div class="card-number-display" id="card-num-display">•••• •••• •••• ••••</div>
+
+                                <div class="card-footer">
+                                    <div class="card-holder-group">
+                                        <span class="card-label">CARD HOLDER</span>
+                                        <span class="card-value" id="card-holder-display">FULL NAME</span>
+                                    </div>
+                                    <div class="card-expires-group">
+                                        <span class="card-label">EXPIRES</span>
+                                        <span class="card-value" id="card-expiry-display">MM/YY</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Form -->
+                    <form class="payment-form" id="checkout-form" onsubmit="return false;">
+                        
+                        <!-- Card Number -->
+                        <div class="form-group">
+                            <label for="card-number" class="field-label">Card Number</label>
+                            <div class="input-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="input-icon">
+                                    <rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect>
+                                    <line x1="2" y1="10" x2="22" y2="10"></line>
+                                </svg>
+                                <input type="text" id="card-number" class="form-input" placeholder="1234 5678 9012 3455" maxlength="19" autocomplete="cc-number">
+                            </div>
+                        </div>
+
+                        <!-- Card Holder Name -->
+                        <div class="form-group">
+                            <label for="card-holder-name" class="field-label">Card Holder Name</label>
+                            <div class="input-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="input-icon">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                <input type="text" id="card-holder-name" class="form-input" placeholder="John Doe" autocomplete="cc-name">
+                            </div>
+                        </div>
+
+                        <!-- Expiry and CVV Row -->
+                        <div class="form-row">
+                            <div class="form-group half-width">
+                                <label for="card-expiry" class="field-label">Expiry Date</label>
+                                <div class="input-wrapper">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="input-icon">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    <input type="text" id="card-expiry" class="form-input" placeholder="MM/YY" maxlength="5" autocomplete="cc-exp">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group half-width">
+                                <label for="card-cvv" class="field-label">
+                                    CVV 
+                                    <span class="info-bubble" title="3-digit security code on the back of your card">?</span>
+                                </label>
+                                <div class="input-wrapper">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="input-icon">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                    </svg>
+                                    <input type="password" id="card-cvv" class="form-input" placeholder="•••" maxlength="3" autocomplete="cc-csc">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Terms Checkbox -->
+                        <div class="terms-group">
+                            <label class="checkbox-container" for="terms-checkbox">
+                                <input type="checkbox" id="terms-checkbox" required>
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-label">I agree to the <a href="#" class="terms-link">Terms and Conditions</a> of Furniro Payments.</span>
+                            </label>
+                        </div>
+
+                        <!-- Pay Now Button -->
+                        <button type="submit" class="btn btn-pay-now" id="pay-submit-btn">
+                            <span>Proceed to Pay Rp. 29,30,000.00</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- UPI Panel (Placeholder, visual consistency) -->
+                <div class="tab-content hidden" id="panel-upi">
+                    <div class="placeholder-panel">
+                        <div class="payment-icon-large">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="60" height="60">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <h3>Unified Payments Interface (UPI)</h3>
+                        <p>Pay quickly using your preferred UPI app. Just enter your VPA / UPI ID below.</p>
+                        <div class="form-group vpa-group">
+                            <label for="upi-id" class="field-label">UPI ID / VPA</label>
+                            <input type="text" id="upi-id" class="form-input" placeholder="username@upi">
+                        </div>
+                        <button class="btn btn-pay-now" id="pay-upi-btn">Pay with UPI</button>
+                    </div>
+                </div>
+
+                <!-- Net Banking Panel (Placeholder) -->
+                <div class="tab-content hidden" id="panel-netbanking">
+                    <div class="placeholder-panel">
+                        <div class="payment-icon-large">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="60" height="60">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="9" y1="3" x2="9" y2="21"></line>
+                            </svg>
+                        </div>
+                        <h3>Net Banking</h3>
+                        <p>Select your bank from the list below to complete the transaction secure and fast.</p>
+                        <div class="form-group bank-select-group">
+                            <label for="bank-select" class="field-label">Choose Bank</label>
+                            <select id="bank-select" class="form-input select-input">
+                                <option value="">-- Choose your bank --</option>
+                                <option value="sbi">State Bank of India</option>
+                                <option value="hdfc">HDFC Bank</option>
+                                <option value="icici">ICICI Bank</option>
+                                <option value="axis">Axis Bank</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-pay-now" id="pay-netbanking-btn">Proceed to Net Banking</button>
+                    </div>
+                </div>
+
+                <!-- Wallet Panel (Placeholder) -->
+                <div class="tab-content hidden" id="panel-wallet">
+                    <div class="placeholder-panel">
+                        <div class="payment-icon-large">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="60" height="60">
+                                <path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"></path>
+                                <path d="M4 6v12a2 2 0 0 0 2 2h14v-4"></path>
+                                <path d="M18 12a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h4v-6z"></path>
+                            </svg>
+                        </div>
+                        <h3>Digital Wallet</h3>
+                        <p>Link and pay via your digital wallet including PayTM, PhonePe, Amazon Pay, or PayPal.</p>
+                        <button class="btn btn-pay-now">Link Wallet & Pay</button>
+                    </div>
+                </div>
+
+                <!-- EMI Panel (Placeholder) -->
+                <div class="tab-content hidden" id="panel-emi">
+                    <div class="placeholder-panel">
+                        <div class="payment-icon-large">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="60" height="60">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Easy Monthly Installments (EMI)</h3>
+                        <p>No-cost and standard EMI options available on credit and select debit cards.</p>
+                        <button class="btn btn-pay-now">Check Eligibility</button>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <!-- Floating Toast Container for Warnings & Notifications -->
+    <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+    <!-- Main JavaScript File -->
+    <script src="payment.js"></script>
+</body>
+</html>
