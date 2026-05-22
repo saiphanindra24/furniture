@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product – Furniture</title>
+  <link rel="stylesheet" href="../Shop/index.css" />
+  <style>
+    .product-detail {
+      max-width: 800px;
+      margin: 80px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: center;
+      text-align: center;
+    }
+    .product-detail img { max-width: 100%; height: auto; border-radius: var(--radius); box-shadow: var(--shadow-card); }
+    .product-detail h2 { font-family: var(--font-display); font-size: 2rem; color: var(--color-text); }
+    .product-detail .price { font-size: 1.5rem; font-weight: 700; color: var(--color-primary); }
+    .product-detail .btn-add-cart { padding: 12px 36px; font-size: 1rem; }
+  </style>
+</head>
+<body>
+  <header class="site-navbar">
+    <div class="site-navbar__inner container">
+      <a href="../Home/Home.html" class="site-navbar__brand">
+        <img src="../assets/logo.png" alt="Furniro logo"><span>Furniro</span>
+      </a>
+      <nav class="site-navbar__menu" aria-label="Primary navigation">
+        <a href="../Home/Home.html" class="site-navbar__link">Home</a>
+        <a href="../Shop/index.html" class="site-navbar__link">Shop</a>
+        <a href="../blog/blog.html" class="site-navbar__link">About</a>
+        <a href="../checkout/contact.html" class="site-navbar__link">Contact</a>
+      </nav>
+      <div class="navbar__icons">
+        <button title="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+        <button title="Account"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+        <button title="Wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5..."/></svg></button>
+        <a href="../singleproduct/cart.html"><button title="Cart" id="cart-button"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-count" id="cart-count">0</span></button></a>
+      </div>
+    </div>
+  </header>
+  <main class="product-detail container">
+    <img id="product-img" src="" alt="Product Image" />
+    <h2 id="product-name">Product Name</h2>
+    <p class="price" id="product-price">Rs 0</p>
+    <p class="description">Detailed description for the product goes here.</p>
+    <button class="btn-add-cart" id="add-to-cart">Add to Cart</button>
+  </main>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('name') || 'Product';
+    const img = params.get('img') || '';
+    document.getElementById('product-name').textContent = decodeURIComponent(name);
+    if (img) { document.getElementById('product-img').src = decodeURIComponent(img); }
+    const priceMap = { 'Syltherine':'2,500,000','Leviosa':'2,500,000','Lolito':'7,000,000','Respira':'500,000','Grifo':'1,500,000','Muggo':'150,000','Pingky':'7,000,000','Potyvase':'500,000','Caserta':'3,200,000','Astera':'4,200,000','Dania':'3,800,000','Virgo':'6,500,000'};
+    const base = name.split(' ')[0];
+    document.getElementById('product-price').textContent = 'Rs ' + (priceMap[base] || '0');
+    // Cart count sync with localStorage (optional simple implementation)
+    const cartCountEl = document.getElementById('cart-count');
+    const updateCart = () => {
+      const count = parseInt(localStorage.getItem('cartCount')||'0',10);
+      cartCountEl.textContent = count;
+    };
+    document.getElementById('add-to-cart').addEventListener('click',()=>{
+      let count = parseInt(localStorage.getItem('cartCount')||'0',10)+1;
+      localStorage.setItem('cartCount',count);
+      updateCart();
+    });
+    updateCart();
+  </script>
+</body>
+</html>

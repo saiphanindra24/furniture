@@ -37,8 +37,13 @@
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </button>
         <!-- Cart -->
-        <button title="Cart">
-          <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <button title="Cart" id="cart-button">
+          <svg viewBox="0 0 24 24">
+            <circle cx="9" cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+          <span class="cart-count" id="cart-count">0</span>
         </button>
       </div>
 
@@ -63,9 +68,14 @@
 
       <div class="filter-bar__left">
         <button class="filter-btn">
-          <svg viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+          <svg viewBox="0 0 24 24">
+            <line x1="4" y1="6" x2="20" y2="6"/>
+            <line x1="8" y1="12" x2="16" y2="12"/>
+            <line x1="11" y1="18" x2="13" y2="18"/>
+          </svg>
           Filter
         </button>
+        <input type="search" id="search-input" placeholder="Search products..." class="search-input" style="padding:8px 12px; border:1px solid var(--color-border); border-radius:4px; margin-left:12px;" />
 
         <div class="view-toggles">
           <!-- Grid view (active) -->
@@ -112,7 +122,7 @@
             <img src="image 1.png"  loading="lazy" />
             <span class="product-card__badge product-card__badge--discount">-30%</span>
             <div class="product-card__overlay">
-              <button class="btn-add-cart">Add to cart</button>
+              <button class="btn-add-cart">Buy Now</button>
               <div class="overlay-actions">
                 <a href="#" class="overlay-action">
                   <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
@@ -612,5 +622,6 @@
       </div>
     </div>
   </footer>
+<script src="shop.js"></script>
 </body>
 </html>

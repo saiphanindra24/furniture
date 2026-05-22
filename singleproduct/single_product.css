@@ -1,7 +1,9 @@
 /* ===========================
    RESET & BASE
 =========================== */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -381,50 +383,70 @@ button {
   margin-bottom: 60px;
 }
 
+/* Actions */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 60px;
+}
+
+/* Quantity Box */
 .qty {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 160px;
+  height: 56px;
   border: 1px solid #d1d5db;
   border-radius: 14px;
   overflow: hidden;
-  min-width: 140px;
-  height: 56px;
-  justify-content: space-between;
+  background: #fff;
 }
 
+/* Quantity Buttons */
 .qty button {
-  width: 44px;
+  width: 48px;
   height: 100%;
-  background: transparent;
   border: none;
-  font-size: 20px;
+  background: transparent;
+  font-size: 22px;
   font-weight: 600;
-  cursor: pointer;
   color: #334155;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
 .qty button:hover {
-  background: #f8fafc;
+  background: #f3f4f6;
 }
 
+/* Quantity Number */
 .qty span {
-  min-width: 34px;
-  text-align: center;
-  font-size: 1rem;
-  color: #0f172a;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
 }
 
+/* Common Button Styles */
 .btn-cart,
 .btn-compare {
-  min-width: 180px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   height: 56px;
+  padding: 0 28px;
   border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
   border: 1px solid transparent;
-  font-size: 0.95rem;
-  font-weight: 700;
-  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
 }
 
+/* Buy Now Button */
 .btn-cart {
   background: #B88E2F;
   color: #fff;
@@ -432,19 +454,21 @@ button {
 }
 
 .btn-cart:hover {
-  transform: translateY(-1px);
-  background: #a27024;
+  background: #9c7725;
+  transform: translateY(-2px);
 }
 
+/* Compare Button */
 .btn-compare {
   background: #fff;
   color: #334155;
-  border-color: #cbd5e1;
+  border: 1px solid #cbd5e1;
 }
 
 .btn-compare:hover {
-  transform: translateY(-1px);
   background: #f8fafc;
+  border-color: #94a3b8;
+  transform: translateY(-2px);
 }
 
 /* Divider Line */
