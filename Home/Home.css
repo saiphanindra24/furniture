@@ -200,12 +200,23 @@ nav ul .menu {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
 }
 
 .card img {
     width: 100%;
     height: auto;
     border-radius: 8px;
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover img {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
 .card div {
@@ -213,6 +224,11 @@ nav ul .menu {
     font-weight: 600;
     margin-top: 30px;
     color: #333;
+    transition: color 0.3s ease;
+}
+
+.card:hover div {
+    color: #B88E2F;
 }
 
 .product {
@@ -1247,5 +1263,27 @@ footer {
     .footer-content ul li {
         margin-bottom: 20px;
     }
+}
+
+/* Inspiration Carousel Premium Transitions */
+.inspiration-gallery img,
+.inspiration-preview-image img {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.inspiration-gallery img.fading,
+.inspiration-preview-image img.fading {
+    opacity: 0;
+    transform: scale(0.97);
+}
+
+.dot {
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.dot:hover {
+    transform: scale(1.2);
+    background: #B88E2F;
 }
 
