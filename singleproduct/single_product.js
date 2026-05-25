@@ -29,6 +29,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Cart State
     let cart = []; 
+    try {
+        const rawCart = localStorage.getItem('cart') || localStorage.getItem('cartItems');
+        if (rawCart) {
+            cart = JSON.parse(rawCart);
+            if (!Array.isArray(cart)) {
+                cart = [];
+            }
+        }
+    } catch (e) {
+        console.error("Failed to load cart from localStorage:", e);
+    }
+
+    function saveCartToStorage() {
+        try {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.setItem('cartItems', JSON.stringify(cart));
+            const count = cart.reduce((acc, item) => acc + item.qty, 0);
+            localStorage.setItem('cartCount', count);
+        } catch (e) {
+            console.error("Failed to save cart to localStorage:", e);
+        }
+    }
 
     function parsePrice(priceStr) {
         return parseFloat(priceStr.replace(/[^0-9.-]+/g, ''));
@@ -76,6 +98,9 @@ document.addEventListener('DOMContentLoaded', () => {
             subtotalAmt.textContent = formatPrice(subtotal);
         }
 
+        // Save cart state
+        saveCartToStorage();
+
         // Remove item logic
         document.querySelectorAll('.remove-item').forEach(btn => {
             btn.addEventListener('click', (e) => {
@@ -86,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    updateCartUI(); // Initialize empty cart
+    updateCartUI(); // Initialize cart from localStorage
 
     // Add to Cart Logic
     const addToCartBtn = document.querySelector('.btn-cart');

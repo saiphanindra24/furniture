@@ -17,7 +17,7 @@
 
 
     <link rel="stylesheet" href="Home.css">
-    <script src="script.js"></script>
+    <script src="Home.js" defer></script>
 
 </head>
 
@@ -42,10 +42,13 @@
                 </ul>
 
                 <div class="icons">
-                    <img src="Images/Person.png">
-                    <img src="Images/icons_search.png">
-                    <img src="Images/icons_heart.png">
-                    <a href="../singleproduct/cart.html"><img src="Images/shopping-cart.png"></a>
+                    <img src="Images/Person.png" alt="Person">
+                    <img src="Images/icons_search.png" alt="Search">
+                    <img src="Images/icons_heart.png" alt="Wishlist">
+                    <a href="cart.html" style="position: relative; display: inline-block;">
+                        <img src="Images/shopping-cart.png" alt="Cart">
+                        <span id="cart-count" style="position: absolute; top: -8px; right: -8px; background: #B88E2F; color: white; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; font-family: 'Poppins', sans-serif;">0</span>
+                    </a>
                 </div>
 
             </nav>
