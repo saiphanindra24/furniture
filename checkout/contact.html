@@ -12,32 +12,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="contact.css">
-    <link rel="stylesheet" href="../assets/navbar.css">
-    <link rel="stylesheet" href="../assets/footer.css">
+    <link rel="stylesheet" href="../assets/components/navbar.css">
+<link rel="stylesheet" href="../assets/components/footer.css">
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
 </head>
 <body>
-
-    <header class="site-navbar">
-        <div class="site-navbar__inner">
-            <a href="../Home/Home.html" class="site-navbar__brand">
-                <img src="../assets/logo.png" alt="Furniro logo">
-                <span>Furniro</span>
-            </a>
-            <nav class="site-navbar__menu" aria-label="Primary navigation">
-                <a href="../Home/Home.html" class="site-navbar__link">Home</a>
-                <a href="../Shop/index.html" class="site-navbar__link">Shop</a>
-                <a href="../blog/blog.html" class="site-navbar__link">About</a>
-                <a href="contact.html" class="site-navbar__link active">Contact</a>
-            </nav>
-            <div class="site-navbar__actions">
-                <a href="../Home/Home.html" class="site-navbar__icon" aria-label="Account"><i class="fa-regular fa-user"></i></a>
-                <a href="../Shop/index.html" class="site-navbar__icon" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
-                <a href="../Wishlist/Wishlist.html" class="site-navbar__icon" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></a>
-                <a href="../Home/cart.html" class="site-navbar__icon" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i></a>
-            </div>
-        </div>
-    </header>
-
+    <div id="navbar"></div>
     <!-- Banner Section -->
     <section class="banner">
         <img src="./images/1.png" alt="Banner Background" class="banner-bg" onerror="this.src='https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=2069&auto=format&fit=crop'">
@@ -141,39 +125,12 @@
     </section>
 
     <!-- Footer Section -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-col brand-col">
-                <h3>Funiro.</h3>
-                <p>400 University Drive Suite 200 Coral<br>Gables,<br>FL 33134 USA</p>
-            </div>
-            <div class="footer-col links-col">
-                <h4>Links</h4>
-                <a href="#">Home</a>
-                <a href="#">Shop</a>
-                <a href="../blog/blog.html">About</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            <div class="footer-col help-col">
-                <h4>Help</h4>
-                <a href="#">Payment Options</a>
-                <a href="#">Returns</a>
-                <a href="#">Privacy Policies</a>
-            </div>
-            <div class="footer-col newsletter-col">
-                <h4>Newsletter</h4>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Enter Your Email Address">
-                    <button type="submit">SUBSCRIBE</button>
-                </form>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>2023 furino. All rights reverved</p>
-        </div>
-    </footer>
+   <div id="footer"></div>
+
+<script src="../assets/components/layout.js"></script>
+<script src="../assets/components/cart-count.js"></script>
 
     <script src="contact.js"></script>
-    <script src="../assets/footer.js"></script>
+  
 </body>
 </html>

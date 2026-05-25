@@ -5,41 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout - Furniro</title>
     <link rel="stylesheet" href="checkout.css">
-    <link rel="stylesheet" href="../assets/footer.css">
-    <link rel="stylesheet" href="../assets/navbar.css">
+    <link rel="stylesheet" href="../assets/components/navbar.css">
+<link rel="stylesheet" href="../assets/components/footer.css">
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <header class="site-navbar">
-        <div class="site-navbar__inner">
-            <a href="../Home/Home.html" class="site-navbar__brand">
-                <img src="../assets/logo.png" alt="Furniro logo">
-                <span>Furniro</span>
-            </a>
-            <nav class="site-navbar__menu" aria-label="Primary navigation">
-                <a href="../Home/Home.html" class="site-navbar__link">Home</a>
-                <a href="../Shop/index.html" class="site-navbar__link active">Shop</a>
-                <a href="../blog/blog.html" class="site-navbar__link">About</a>
-                <a href="contact.html" class="site-navbar__link">Contact</a>
-            </nav>
-            <div class="site-navbar__actions">
-                <a href="../Home/Home.html" class="site-navbar__icon" aria-label="Account">
-                    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-                </a>
-                <a href="../Shop/index.html" class="site-navbar__icon" aria-label="Search">
-                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
-                </a>
-                <a href="../Wishlist/Wishlist.html" class="site-navbar__icon" aria-label="Wishlist">
-                    <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                </a>
-                <a href="../Home/cart.html" class="site-navbar__icon" aria-label="Cart">
-                    <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-                </a>
-            </div>
-    </header>
+    <div id="navbar"></div>
 
     <!-- Page Banner -->
     <section class="page-banner">
@@ -210,47 +189,9 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-col brand">
-                <h2>Furniro.</h2>
-                <p>400 University Drive Suite 200 Coral<br>Gables,<br>FL 33134 USA</p>
-            </div>
-            
-            <div class="footer-col links">
-                <h4>Links</h4>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Shop</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-col help">
-                <h4>Help</h4>
-                <ul>
-                    <li><a href="#">Payment Options</a></li>
-                    <li><a href="#">Returns</a></li>
-                    <li><a href="#">Privacy Policies</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-col newsletter">
-                <h4>Newsletter</h4>
-                <form action="#" class="newsletter-form">
-                    <input type="email" placeholder="Enter Your Email Address" required>
-                    <button type="submit">SUBSCRIBE</button>
-                </form>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>2023 furino. All rights reserved</p>
-        </div>
-    </footer>
-
+   
 <script src="checkout.js"></script>
-<script src="../assets/footer.js"></script>
+<script src="../assets/components/layout.js"></script>
+<script src="../assets/components/cart-count.js"></script>
 </body>
 </html>

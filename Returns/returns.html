@@ -8,39 +8,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="Returns.css">
-  <link rel="stylesheet" href="../assets/footer.css">
+  <link rel="stylesheet" href="../assets/components/navbar.css">
+<link rel="stylesheet" href="../assets/components/footer.css">
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
 </head>
 <body>
 
   <!-- ====== NAVBAR ====== -->
-  <header class="navbar">
-    <div class="navbar__inner">
-      <a href="../Home/Home.html" class="navbar__brand">
-        <img src="Logo.png" alt="Furniro Logo" />
-        Furniro
-      </a>
-      <nav class="navbar__nav">
-        <a href="../Home/Home.html">Home</a>
-        <a href="../Shop/index.html">Shop</a>
-        <a href="../blog/blog.html">About</a>
-        <a href="../checkout/contact.html">Contact</a>
-      </nav>
-      <div class="navbar__icons">
-        <button title="Search">
-          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        </button>
-        <button title="Account">
-          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        </button>
-        <button title="Wishlist">
-          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-        </button>
-        <button title="Cart">
-          <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-        </button>
-      </div>
-    </div>
-  </header>
+  <div id="navbar"></div>
 
   <!-- ====== HERO ====== -->
   <section class="hero">
@@ -308,39 +287,8 @@
   </section>
 
   <!-- ====== FOOTER ====== -->
-  <footer class="footer">
-    <div class="footer__grid">
-      <div>
-        <span class="footer__brand-name">Funiro.</span>
-        <p class="footer__address">400 University Drive Suite 200 Coral Gables,<br>FL 33134 USA</p>
-      </div>
-      <div>
-        <p class="footer__col-title">Links</p>
-        <ul class="footer__links">
-          <li><a href="../Home/Home.html">Home</a></li>
-          <li><a href="../Shop/index.html">Shop</a></li>
-          <li><a href="../blog/blog.html">About</a></li>
-          <li><a href="../checkout/contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="footer__col-title">Help</p>
-        <ul class="footer__links">
-          <li><a href="#">Payment Options</a></li>
-          <li><a href="Returns.html">Returns</a></li>
-          <li><a href="privacy-policy.html">Privacy Policies</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="footer__col-title">Newsletter</p>
-        <div class="newsletter-form">
-          <input type="email" class="newsletter-input" placeholder="Enter Your Email Address" />
-          <button class="newsletter-submit">SUBSCRIBE</button>
-        </div>
-      </div>
-    </div>
-    <div class="footer__bottom"><p>2023 Funiro. All rights reserved</p></div>
-  </footer>
+  <div id="footer"></div>
+  <script src="../assets/components/layout.js"></script>
 
   <script>
     document.querySelectorAll('.faq-question').forEach(btn => {
@@ -352,6 +300,6 @@
       });
     });
   </script>
-  <script src="../assets/footer.js"></script>
+  <script src="../assets/components/cart-count.js"></script>
 </body>
 </html>

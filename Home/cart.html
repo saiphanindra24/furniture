@@ -9,76 +9,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
     <link rel="stylesheet" href="cart.css">
-    <link rel="stylesheet" href="../assets/footer.css">
+    <link rel="stylesheet" href="../assets/components/navbar.css">
+<link rel="stylesheet" href="../assets/components/footer.css">
 
 </head>
 
 <body>
 
     <div>
-        <!-- <header>
-
-            <div class="Navbar">
-                <nav>
-                    <ul class="logo">
-                        <li class="logo-Image"><img src="Images/Logo.png" alt="logo"></li>
-                        <li class="logo-text"><label for="text">Furnior</label></li>
-                    </ul>
-
-                    <ul class="nav-list">
-                        <li class="item-1"><a href="Home.html">Home</a></li>
-                        <li class="item-2"><a href="Shop.html">Shop</a></li>
-                        <li class="item-3"><a href="about.html">about</a></li>
-                        <li class="item-4"><a href="contact.html">Contact</a></li>
-                    </ul>
-
-                    <ul class="image">
-                        <li class="person"><a href="#"><img src="Images/Person.png" alt="person"></a></li>
-                        <li class="search"><a href="#"><img src="Images/icons_search.png" alt="search"></a></li>
-                        <li class="likes"><a href="#"><img src="Images/icons_heart.png" alt="likes"></a></li>
-                        <li class="cart"><a href="#"><img src="Images/shopping-cart.png" alt="cart"></a></li>
-                    </ul>
-                </nav>
-            </div>
-
-        </header> -->
-        <header>
-
-            <nav class="navbar">
-
-                <div class="logo">
-                    <img id="lo" src="Images/Logo.png" />
-                    <h3>Furniro</h3>
-                </div>
-
-
-                <ul class="menu">
-                    <li class="item"><a href="Home.html">Home</a></li>
-                    <li class="item"><a href="../Shop/index.html">Shop</a></li>
-                    <li class="item"><a href="../blog/blog.html">About</a></li>
-                    <li class="item"><a href="../checkout/contact.html">Contact</a></li>
-                </ul>
-
-                <div class="icons">
-                    <a href="../checkout/contact.html" aria-label="Account">
-                        <img src="Images/Person.png" alt="Account">
-                    </a>
-                    <a href="../Shop/index.html" aria-label="Search">
-                        <img src="Images/icons_search.png" alt="Search">
-                    </a>
-                    <a href="../Wishlist/Wishlist.html" style="position: relative; display: inline-block;">
-                        <img src="Images/icons_heart.png" alt="Wishlist">
-                    </a>
-                    <a href="cart.html" style="position: relative; display: inline-block;">
-                        <img src="Images/shopping-cart.png" alt="Cart">
-                        <span id="cart-count" style="position: absolute; top: -8px; right: -8px; background: #B88E2F; color: white; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; font-family: 'Poppins', sans-serif;">0</span>
-                    </a>
-                </div>
-
-            </nav>
-
-        </header>
+       <div id="navbar"></div>
         <main>
             <section class="cart-hero">
                 <div class="cart-hero-content">
@@ -172,51 +116,13 @@
 
             </section>
         </main>
-        <footer>
-            <div class="footer-container">
-                <div class="footer-content">
-                    <div class="footer-brand">
-                        <h2>Funiro.</h2>
-                        <address>
-                            400 University Drive Suite 200 Coral<br>
-                            Gables,<br>
-                            FL 33134 USA
-                        </address>
-                    </div>
-                    <div class="footer-links">
-                        <h4>Links</h4>
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Shop</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-help">
-                        <h4>Help</h4>
-                        <ul>
-                            <li><a href="#">Payment Options</a></li>
-                            <li><a href="#">Returns</a></li>
-                            <li><a href="#">Privacy Policies</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-newsletter">
-                        <h4>Newsletter</h4>
-                        <form class="newsletter-form">
-                            <input type="email" placeholder="Enter Your Email Address">
-                            <button type="submit">SUBSCRIBE</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p>2023 furino. All rights reserved</p>
-                </div>
-            </div>
-        </footer>
-    </div>
 
-    <script src="cart.js" defer></script>
-    <script src="../assets/footer.js"></script>
+    </div>
+    <div id="footer"></div>
+
+<script src="../assets/components/layout.js"></script>
+<script src="../assets/components/cart-count.js"></script>
+    <script src="cart.js"></script>
 </body>
 
 </html>
