@@ -598,6 +598,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const image = imgEl.getAttribute('src');
         const description = descEl ? descEl.textContent.trim() : '';
         const id = name.toLowerCase().replace(/\s+/g, '-');
+        const category = card.getAttribute('data-category') || 'living';
+
+        const inferCategory = (productName) => {
+            const normalized = productName.toLowerCase();
+            if (['syltherine', 'leviosa', 'respira', 'virgo', 'muggo'].some(keyword => normalized.includes(keyword))) {
+                return 'dining';
+            }
+            if (['pingky', 'grifo'].some(keyword => normalized.includes(keyword))) {
+                return 'bedroom';
+            }
+            return 'living';
+        };
 
         // 1. ADD TO CART
         if (e.target.classList.contains('btn-add-cart')) {
@@ -664,6 +676,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     showToast('Failed to copy link.');
                 });
             } else if (actionText === 'compare') {
+                const productData = {
+                    id,
+                    name,
+                    price,
+                    image,
+                    description,
+                    category: category || inferCategory(name)
+                };
+
+                localStorage.setItem('compareSelection', JSON.stringify(productData));
+                localStorage.removeItem('compareTarget');
                 window.location.href = '../Product Comparison/PC.html';
             }
         }

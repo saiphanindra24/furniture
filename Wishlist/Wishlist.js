@@ -58,7 +58,7 @@ function addToCart(productId) {
 function displayWishlist() {
     const wishlist = getWishlist();
     const wishlistContent = document.getElementById('wishlist-content');
-    
+
     if (!wishlistContent) return;
 
     if (wishlist.length === 0) {
@@ -72,11 +72,18 @@ function displayWishlist() {
         return;
     }
 
-    wishlistContent.innerHTML = wishlist.map(item => `
+    wishlistContent.innerHTML = wishlist.map(item => {
+        // Fix image path - add Shop folder prefix if not already present
+        let imagePath = item.image;
+        if (!imagePath.includes('../') && !imagePath.startsWith('http')) {
+            imagePath = '../Shop/' + imagePath;
+        }
+
+        return `
         <div class="wishlist-item">
             <div class="wishlist-item-product">
                 <div class="wishlist-item-thumb">
-                    <img src="${item.image}" alt="${item.name}">
+                    <img src="${imagePath}" alt="${item.name}">
                 </div>
                 <div class="wishlist-item-info">
                     <h3 class="wishlist-item-name">${item.name}</h3>
@@ -89,7 +96,8 @@ function displayWishlist() {
                 <button class="remove-btn" onclick="removeFromWishlist('${item.id}')">Remove</button>
             </div>
         </div>
-    `).join('');
+    `;
+    }).join('');
 }
 
 function goCart() {

@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem('furniro_billing', JSON.stringify(billingDetails));
 
                 alert('Billing details verified! Redirecting to secure payment page to complete your purchase.');
-                window.location.href = '../furniro payments/payment.html';
+                window.location.href = '../payments/payment.html';
             } else {
                 alert('Please fill in all required billing details before placing your order.');
             }

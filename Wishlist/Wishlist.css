@@ -77,7 +77,7 @@ header {
     position: relative;
     width: 100%;
     min-height: 316px;
-    background: url('Images/background.png') center/cover no-repeat;
+    background: url('../Home/Images/background.png') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
