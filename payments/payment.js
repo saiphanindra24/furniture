@@ -5,6 +5,19 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'muggo', name: 'Muggo', qty: 1, unitPrice: 150000, img: 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?q=80&w=150&auto=format&fit=crop', sub: 'Furniture Item' }
     ];
 
+    function parsePrice(priceStr) {
+        if (!priceStr) return 0;
+        if (typeof priceStr === 'number') return priceStr;
+        let cleaned = priceStr.replace(/[^0-9.,]/g, '').trim();
+        if (cleaned.endsWith('.00') || cleaned.endsWith(',00')) {
+            cleaned = cleaned.substring(0, cleaned.length - 3);
+        } else if (cleaned.endsWith('.0') || cleaned.endsWith(',0')) {
+            cleaned = cleaned.substring(0, cleaned.length - 2);
+        }
+        cleaned = cleaned.replace(/[^0-9]/g, '');
+        return parseInt(cleaned) || 0;
+    }
+
     function loadCartItems() {
         try {
             const rawCart = localStorage.getItem('cart') || localStorage.getItem('cartItems');
@@ -15,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         id: item.id || `item-${idx}`,
                         name: item.name || item.title || `Item ${idx + 1}`,
                         qty: parseInt(item.qty || item.quantity || 1, 10),
-                        unitPrice: parseFloat(item.price || item.unitPrice || 0),
+                        unitPrice: (typeof item.price === 'number') ? item.price : parsePrice(item.price || item.unitPrice || '0'),
                         img: item.image || item.img || 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=150&auto=format&fit=crop&q=80',
                         sub: item.sub || item.category || 'Furniture Item'
                     }));

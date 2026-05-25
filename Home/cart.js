@@ -11,14 +11,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // PRICE PARSING AND FORMATTING
     // =========================================
     function parsePrice(priceStr) {
-        // Strip trailing decimals like .00 if present
-        let cleaned = priceStr.split('.')[0]; 
-        cleaned = cleaned.replace(/[^\d]/g, '');
+        if (!priceStr) return 0;
+        if (typeof priceStr === 'number') return priceStr;
+        // Remove everything except digits, commas, and dots
+        let cleaned = priceStr.replace(/[^0-9.,]/g, '').trim();
+        // Handle common .00 or ,00 cent endings
+        if (cleaned.endsWith('.00') || cleaned.endsWith(',00')) {
+            cleaned = cleaned.substring(0, cleaned.length - 3);
+        } else if (cleaned.endsWith('.0') || cleaned.endsWith(',0')) {
+            cleaned = cleaned.substring(0, cleaned.length - 2);
+        }
+        // Remove non-digit grouping separators (both commas and dots)
+        cleaned = cleaned.replace(/[^0-9]/g, '');
         return parseInt(cleaned) || 0;
     }
 
     function formatPrice(number, originalPriceStr) {
-        const hasRp = originalPriceStr.toLowerCase().includes('rp');
+        const hasRp = originalPriceStr && originalPriceStr.toLowerCase().includes('rp');
         if (hasRp) {
             return 'Rp ' + number.toLocaleString('id-ID');
         } else {
@@ -44,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const cart = JSON.parse(localStorage.getItem('cart') || '[]');
 
         // Update Nav Cart Count
-        const totalItemsCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+        const totalItemsCount = cart.reduce((sum, item) => sum + (item.quantity || item.qty || 0), 0);
         localStorage.setItem('cartCount', totalItemsCount);
         if (cartCountEl) {
             cartCountEl.textContent = totalItemsCount;
@@ -82,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         cart.forEach((item, index) => {
             const numericPrice = parsePrice(item.price);
-            const itemSubtotal = numericPrice * item.quantity;
+            const itemSubtotal = numericPrice * (item.quantity || item.qty || 1);
             cartSubtotal += itemSubtotal;
             originalCurrencyStr = item.price; // Save to format properly at the end
 
@@ -100,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="cart-item-price">${item.price}</div>
                     <div class="cart-item-quantity">
-                        <input type="number" value="${item.quantity}" min="1" class="qty-input">
+                        <input type="number" value="${item.quantity || item.qty || 1}" min="1" class="qty-input">
                     </div>
                     <div class="cart-item-subtotal">${formatPrice(itemSubtotal, item.price)}</div>
                     <div class="cart-item-remove">
@@ -143,6 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const cart = JSON.parse(localStorage.getItem('cart') || '[]');
                 if (cart[index]) {
                     cart[index].quantity = newQty;
+                    cart[index].qty = newQty;
                     localStorage.setItem('cart', JSON.stringify(cart));
                     renderCart(); // Re-render to update all subtotals/totals cleanly
                 }

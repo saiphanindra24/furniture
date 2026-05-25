@@ -533,52 +533,140 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // =========================================
-    // ADD TO CART
+    // TOAST NOTIFICATIONS & DYNAMIC STYLES
     // =========================================
+    const styleEl = document.createElement('style');
+    styleEl.textContent = `
+        .premium-toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #B88E2F;
+            color: #ffffff;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            z-index: 99999;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .premium-toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    `;
+    document.head.appendChild(styleEl);
 
+    function showToast(message) {
+        let toast = document.querySelector('.premium-toast');
+        if (!toast) {
+            toast = document.createElement('div');
+            toast.className = 'premium-toast';
+            document.body.appendChild(toast);
+        }
+        toast.textContent = message;
+        toast.classList.add('show');
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    }
+
+    // =========================================
+    // PRODUCT OVERLAY ACTIONS (CART, SHARE, COMPARE, LIKE)
+    // =========================================
     document.addEventListener('click', (e) => {
+        const card = e.target.closest('.product-card');
+        if (!card) return;
 
-        if (
-            e.target.classList.contains('btn-add-cart')
-        ) {
-            const card = e.target.closest('.product-card');
-            if (card) {
-                const nameEl = card.querySelector('.product-card__name');
-                const priceEl = card.querySelector('.product-card__price');
-                const imgEl = card.querySelector('.product-card__img-wrap img');
-                
-                if (nameEl && priceEl && imgEl) {
-                    const name = nameEl.textContent.trim();
-                    const price = priceEl.textContent.trim();
-                    const image = imgEl.getAttribute('src');
-                    
-                    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-                    const existingItem = cart.find(item => item.name === name);
-                    if (existingItem) {
-                        existingItem.quantity += 1;
-                    } else {
-                        cart.push({
-                            name: name,
-                            price: price,
-                            image: image,
-                            quantity: 1
-                        });
-                    }
-                    localStorage.setItem('cart', JSON.stringify(cart));
-                    
-                    const newCartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-                    localStorage.setItem('cartCount', newCartCount);
-                    
-                    if (cartCountEl) {
-                        cartCountEl.textContent = newCartCount;
-                    }
-                    
-                    // Redirect to cart.html
-                    window.location.href = "../Home/cart.html";
-                }
+        const nameEl = card.querySelector('.product-card__name');
+        const priceEl = card.querySelector('.product-card__price');
+        const imgEl = card.querySelector('.product-card__img-wrap img');
+        const descEl = card.querySelector('.product-card__desc');
+
+        if (!nameEl || !priceEl || !imgEl) return;
+
+        const name = nameEl.textContent.trim();
+        const price = priceEl.textContent.trim();
+        const image = imgEl.getAttribute('src');
+        const description = descEl ? descEl.textContent.trim() : '';
+        const id = name.toLowerCase().replace(/\s+/g, '-');
+
+        // 1. ADD TO CART
+        if (e.target.classList.contains('btn-add-cart')) {
+            let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            const existingItem = cart.find(item => item.id === id || item.name === name);
+            if (existingItem) {
+                existingItem.quantity = (existingItem.quantity || existingItem.qty || 1) + 1;
+                existingItem.qty = existingItem.quantity;
+            } else {
+                cart.push({
+                    id: id,
+                    name: name,
+                    price: price,
+                    image: image,
+                    quantity: 1,
+                    qty: 1
+                });
             }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.setItem('cartItems', JSON.stringify(cart));
+            
+            const newCartCount = cart.reduce((sum, item) => sum + (item.quantity || item.qty || 1), 0);
+            localStorage.setItem('cartCount', newCartCount);
+            
+            if (cartCountEl) {
+                cartCountEl.textContent = newCartCount;
+            }
+            
+            // Redirect to cart.html
+            window.location.href = "../Home/cart.html";
         }
 
+        // 2. OVERLAY LINK ACTIONS (SHARE, COMPARE, LIKE)
+        const overlayActionLink = e.target.closest('.overlay-action');
+        if (overlayActionLink) {
+            e.preventDefault();
+            const actionText = overlayActionLink.textContent.trim().toLowerCase();
+
+            if (actionText === 'like') {
+                let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+                const alreadyInWishlist = wishlist.some(item => item.id === id || item.name === name);
+                if (!alreadyInWishlist) {
+                    wishlist.push({
+                        id: id,
+                        name: name,
+                        price: price,
+                        image: image,
+                        description: description
+                    });
+                    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                    showToast(`❤️ Added ${name} to Wishlist!`);
+                } else {
+                    showToast(`😊 ${name} is already in your Wishlist!`);
+                }
+            } else if (actionText === 'share') {
+                const productName = encodeURIComponent(name);
+                const productImg = encodeURIComponent(image);
+                const productUrl = `${window.location.origin}/singleproduct/product.html?name=${productName}&img=${productImg}`;
+                
+                navigator.clipboard.writeText(productUrl).then(() => {
+                    showToast('🔗 Product link copied to clipboard!');
+                }).catch(err => {
+                    console.error('Clipboard copy failed:', err);
+                    showToast('Failed to copy link.');
+                });
+            } else if (actionText === 'compare') {
+                window.location.href = '../Product Comparison/PC.html';
+            }
+        }
     });
 
     // =========================================

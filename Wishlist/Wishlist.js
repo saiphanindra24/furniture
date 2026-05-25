@@ -1,17 +1,18 @@
 function getWishlist() {
-    return JSON.parse(localStorage.getItem('furniorWishlist') || '[]');
+    return JSON.parse(localStorage.getItem('wishlist') || '[]');
 }
 
 function saveWishlist(wishlist) {
-    localStorage.setItem('furniorWishlist', JSON.stringify(wishlist));
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
 }
 
 function getCart() {
-    return JSON.parse(localStorage.getItem('furniorCart') || '[]');
+    return JSON.parse(localStorage.getItem('cart') || '[]');
 }
 
 function saveCart(cart) {
-    localStorage.setItem('furniorCart', JSON.stringify(cart));
+    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem('cartItems', JSON.stringify(cart));
 }
 
 function removeFromWishlist(productId) {
@@ -27,23 +28,30 @@ function addToCart(productId) {
     if (!item) return;
 
     const cart = getCart();
-    const existingItem = cart.find(cartItem => cartItem.id === item.id);
+    const existingItem = cart.find(cartItem => cartItem.id === item.id || cartItem.name === item.name);
 
     if (existingItem) {
-        existingItem.quantity += 1;
+        existingItem.quantity = (existingItem.quantity || existingItem.qty || 1) + 1;
+        existingItem.qty = existingItem.quantity;
     } else {
         cart.push({
             id: item.id,
             name: item.name,
-            description: item.description,
+            description: item.description || '',
             price: item.price,
-            originalPrice: item.originalPrice,
+            originalPrice: item.originalPrice || '',
             image: item.image,
-            quantity: 1
+            quantity: 1,
+            qty: 1
         });
     }
 
     saveCart(cart);
+
+    // Update cartCount in localStorage
+    const newCartCount = cart.reduce((sum, cartItem) => sum + (cartItem.quantity || cartItem.qty || 1), 0);
+    localStorage.setItem('cartCount', newCartCount);
+
     alert(item.name + ' has been added to your cart!');
 }
 
@@ -72,7 +80,7 @@ function displayWishlist() {
                 </div>
                 <div class="wishlist-item-info">
                     <h3 class="wishlist-item-name">${item.name}</h3>
-                    <p class="wishlist-item-description">${item.description}</p>
+                    <p class="wishlist-item-description">${item.description || ''}</p>
                 </div>
             </div>
             <div class="wishlist-item-price">${item.price}</div>
@@ -85,11 +93,11 @@ function displayWishlist() {
 }
 
 function goCart() {
-    window.location.href = 'cart.html';
+    window.location.href = '../Home/cart.html';
 }
 
 function goHome() {
-    window.location.href = 'Home.html';
+    window.location.href = '../Home/Home.html';
 }
 
 document.addEventListener('DOMContentLoaded', function () {

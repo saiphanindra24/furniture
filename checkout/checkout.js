@@ -10,6 +10,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    function parsePrice(priceStr) {
+        if (!priceStr) return 0;
+        if (typeof priceStr === 'number') return priceStr;
+        let cleaned = priceStr.replace(/[^0-9.,]/g, '').trim();
+        if (cleaned.endsWith('.00') || cleaned.endsWith(',00')) {
+            cleaned = cleaned.substring(0, cleaned.length - 3);
+        } else if (cleaned.endsWith('.0') || cleaned.endsWith(',0')) {
+            cleaned = cleaned.substring(0, cleaned.length - 2);
+        }
+        cleaned = cleaned.replace(/[^0-9]/g, '');
+        return parseInt(cleaned) || 0;
+    }
+
     // 2. Load and render dynamic order summary from localStorage
     function renderOrderSummary() {
         const summaryContainer = document.querySelector('.order-summary');
@@ -46,13 +59,15 @@ document.addEventListener('DOMContentLoaded', () => {
             // Render items in order
             let lastInserted = header;
             cart.forEach(item => {
-                const itemSubtotal = item.price * item.qty;
+                const numericPrice = (typeof item.price === 'number') ? item.price : parsePrice(item.price);
+                const itemQty = parseInt(item.qty || item.quantity || 1, 10);
+                const itemSubtotal = numericPrice * itemQty;
                 subtotal += itemSubtotal;
 
                 const itemEl = document.createElement('div');
                 itemEl.className = 'summary-item';
                 itemEl.innerHTML = `
-                    <span class="product-name">${item.name} <span class="quantity">x ${item.qty}</span></span>
+                    <span class="product-name">${item.name} <span class="quantity">x ${itemQty}</span></span>
                     <span class="product-price">${formatCurrency(itemSubtotal)}</span>
                 `;
                 lastInserted.after(itemEl);

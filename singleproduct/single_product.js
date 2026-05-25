@@ -53,7 +53,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function parsePrice(priceStr) {
-        return parseFloat(priceStr.replace(/[^0-9.-]+/g, ''));
+        if (!priceStr) return 0;
+        if (typeof priceStr === 'number') return priceStr;
+        let cleaned = priceStr.replace(/[^0-9.,]/g, '').trim();
+        if (cleaned.endsWith('.00') || cleaned.endsWith(',00')) {
+            cleaned = cleaned.substring(0, cleaned.length - 3);
+        } else if (cleaned.endsWith('.0') || cleaned.endsWith(',0')) {
+            cleaned = cleaned.substring(0, cleaned.length - 2);
+        }
+        cleaned = cleaned.replace(/[^0-9]/g, '');
+        return parseInt(cleaned) || 0;
     }
 
     function formatPrice(price) {
