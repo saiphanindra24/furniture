@@ -305,17 +305,18 @@
       <div>
         <p class="footer__col-title">Help</p>
         <ul class="footer__links">
-          <li><a href="#">Payment Options</a></li>
-          <li><a href="returns.html">Returns</a></li>
+          <li><a href="../payments/payment.html">Payment Options</a></li>
+          <li><a href="../Returns/Returns.html">Returns</a></li>
           <li><a href="Privacy.html">Privacy Policies</a></li>
         </ul>
       </div>
       <div>
         <p class="footer__col-title">Newsletter</p>
         <div class="newsletter-form">
-          <input type="email" class="newsletter-input" placeholder="Enter Your Email Address" />
+          <input type="email" class="newsletter-input" placeholder="Enter Your Email Address" aria-label="Email address" autocomplete="email" required />
           <button class="newsletter-submit">SUBSCRIBE</button>
         </div>
+        <p class="newsletter-status" aria-live="polite"></p>
       </div>
     </div>
     <div class="footer__bottom"><p>2023 Funiro. All rights reserved</p></div>
@@ -334,6 +335,35 @@
         if (link.getAttribute('href') === '#' + current) link.classList.add('active');
       });
     });
+  </script>
+  <script>
+    const privacyNewsletterForm = document.querySelector('.newsletter-form');
+
+    if (privacyNewsletterForm) {
+      privacyNewsletterForm.addEventListener('submit', (event) => {
+        const emailInput = privacyNewsletterForm.querySelector('input[type="email"]');
+        const email = emailInput?.value.trim() || '';
+        const status = privacyNewsletterForm.querySelector('.newsletter-status');
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        event.preventDefault();
+
+        if (!emailPattern.test(email)) {
+          if (status) {
+            status.textContent = 'Please enter a valid email address.';
+            status.className = 'newsletter-status error';
+          }
+          return;
+        }
+
+        if (status) {
+          status.textContent = 'Subscribed successfully!';
+          status.className = 'newsletter-status success';
+        }
+
+        privacyNewsletterForm.reset();
+      });
+    }
   </script>
 </body>
 </html>
