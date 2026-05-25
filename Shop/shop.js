@@ -533,38 +533,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // =========================================
-    // TOAST NOTIFICATIONS & DYNAMIC STYLES
+    // TOAST NOTIFICATIONS
     // =========================================
-    const styleEl = document.createElement('style');
-    styleEl.textContent = `
-        .premium-toast {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #B88E2F;
-            color: #ffffff;
-            padding: 15px 30px;
-            border-radius: 12px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 15px;
-            font-weight: 500;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            z-index: 99999;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            pointer-events: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .premium-toast.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    `;
-    document.head.appendChild(styleEl);
-
     function showToast(message) {
         let toast = document.querySelector('.premium-toast');
         if (!toast) {

@@ -16,6 +16,7 @@
 }
 
 body{
+    padding-top:90px;
     font-family:var(--font-family);
     background:#fff;
     color:var(--text-dark);
