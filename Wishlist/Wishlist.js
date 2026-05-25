@@ -1,0 +1,97 @@
+function getWishlist() {
+    return JSON.parse(localStorage.getItem('furniorWishlist') || '[]');
+}
+
+function saveWishlist(wishlist) {
+    localStorage.setItem('furniorWishlist', JSON.stringify(wishlist));
+}
+
+function getCart() {
+    return JSON.parse(localStorage.getItem('furniorCart') || '[]');
+}
+
+function saveCart(cart) {
+    localStorage.setItem('furniorCart', JSON.stringify(cart));
+}
+
+function removeFromWishlist(productId) {
+    let wishlist = getWishlist();
+    wishlist = wishlist.filter(item => item.id !== productId);
+    saveWishlist(wishlist);
+    displayWishlist();
+}
+
+function addToCart(productId) {
+    const wishlist = getWishlist();
+    const item = wishlist.find(wishItem => wishItem.id === productId);
+    if (!item) return;
+
+    const cart = getCart();
+    const existingItem = cart.find(cartItem => cartItem.id === item.id);
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id: item.id,
+            name: item.name,
+            description: item.description,
+            price: item.price,
+            originalPrice: item.originalPrice,
+            image: item.image,
+            quantity: 1
+        });
+    }
+
+    saveCart(cart);
+    alert(item.name + ' has been added to your cart!');
+}
+
+function displayWishlist() {
+    const wishlist = getWishlist();
+    const wishlistContent = document.getElementById('wishlist-content');
+    
+    if (!wishlistContent) return;
+
+    if (wishlist.length === 0) {
+        wishlistContent.innerHTML = `
+            <div class="empty-wishlist" style="grid-column: 1 / -1;">
+                <h2>Your Wishlist is Empty</h2>
+                <p>Add items to your wishlist to save them for later.</p>
+                <button class="buy-btn continue-btn" onclick="goHome()">Continue Shopping</button>
+            </div>
+        `;
+        return;
+    }
+
+    wishlistContent.innerHTML = wishlist.map(item => `
+        <div class="wishlist-item">
+            <div class="wishlist-item-product">
+                <div class="wishlist-item-thumb">
+                    <img src="${item.image}" alt="${item.name}">
+                </div>
+                <div class="wishlist-item-info">
+                    <h3 class="wishlist-item-name">${item.name}</h3>
+                    <p class="wishlist-item-description">${item.description}</p>
+                </div>
+            </div>
+            <div class="wishlist-item-price">${item.price}</div>
+            <div class="wishlist-item-actions">
+                <button class="add-to-cart-btn" onclick="addToCart('${item.id}')">Add to Cart</button>
+                <button class="remove-btn" onclick="removeFromWishlist('${item.id}')">Remove</button>
+            </div>
+        </div>
+    `).join('');
+}
+
+function goCart() {
+    window.location.href = 'cart.html';
+}
+
+function goHome() {
+    window.location.href = 'Home.html';
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    displayWishlist();
+});
