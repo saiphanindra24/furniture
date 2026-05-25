@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist - Furniro</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="Wishlist.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img id="lo" src="Images/Logo.png" alt="Logo" />
+                <h3>Furniro</h3>
+            </div>
+
+            <ul class="menu">
+                <li class="item"><a href="Home.html">Home</a></li>
+                <li class="item"><a href="Shop.html">Shop</a></li>
+                <li class="item"><a href="About.html">About</a></li>
+                <li class="item"><a href="Contact.html">Contact</a></li>
+            </ul>
+
+            <div class="icons">
+                <img src="Images/Person.png" alt="Profile">
+                <img src="Images/icons_search.png" alt="Search">
+                <img src="Images/icons_heart.png" alt="Wishlist" onclick="location.reload()">
+                <img src="Images/shopping-cart.png" alt="Cart" onclick="goCart()">
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="cart-hero">
+            <div class="cart-hero-content">
+                <div class="cart-hero-logo"><img src="Images/Logo.png" alt="Furniro"></div>
+                <h1>Wishlist</h1>
+                <p class="cart-breadcrumb"><a href="Home.html">Home</a> <span>&gt;</span> Wishlist</p>
+            </div>
+        </section>
+
+        <section class="wishlist-layout">
+            <div class="wishlist-table-wrapper">
+                <div class="wishlist-table-heading">
+                    <span>Product</span>
+                    <span>Price</span>
+                    <span>Action</span>
+                </div>
+                <div id="wishlist-content"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h2>Funiro.</h2>
+                    <address>
+                        400 University Drive Suite 200 Coral<br>
+                        Gables,<br>
+                        FL 33134 USA
+                    </address>
+                </div>
+                <div class="footer-links">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="Home.html">Home</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="Contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-help">
+                    <h4>Help</h4>
+                    <ul>
+                        <li><a href="#">Payment Options</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Privacy Policies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button>SUBSCRIBE</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Furniro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="Wishlist.js"></script>
+</body>
+</html>
