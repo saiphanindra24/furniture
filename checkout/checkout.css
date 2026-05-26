@@ -248,24 +248,49 @@ ul {
 .summary-item {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 25px;
     font-size: 16px;
+    gap: 20px;
+}
+
+.summary-product {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex: 1;
+}
+
+.summary-product__image {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid #E7E7E7;
+    background: #FAF3EA;
+}
+
+.summary-product__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .product-name {
-    color: #9F9F9F;
+    color: #000;
+    font-weight: 500;
 }
 
-.product-name .quantity {
-    color: #000;
-    font-size: 16px;
-    margin-left: 10px;
+.quantity {
+    color: #9F9F9F;
+    font-size: 14px;
     font-weight: 500;
 }
 
 .product-price {
     color: #000;
     font-weight: 300;
+    white-space: nowrap;
 }
 
 .summary-subtotal {
