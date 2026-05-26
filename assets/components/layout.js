@@ -23,6 +23,57 @@
   }
 }
 
+function showNewsletterPopup(message) {
+  const existingModal = document.getElementById('newsletter-modal');
+
+  if (existingModal) {
+    existingModal.remove();
+  }
+
+  const overlay = document.createElement('div');
+  overlay.id = 'newsletter-modal';
+  overlay.className = 'newsletter-modal';
+
+  const modal = document.createElement('div');
+  modal.className = 'newsletter-modal__card';
+
+  const icon = document.createElement('div');
+  icon.className = 'newsletter-modal__icon';
+  icon.textContent = '✓';
+
+  const title = document.createElement('h3');
+  title.className = 'newsletter-modal__title';
+  title.textContent = 'Subscription Successful!';
+
+  const text = document.createElement('p');
+  text.className = 'newsletter-modal__text';
+  text.textContent = message;
+
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'newsletter-modal__button';
+  button.textContent = 'Continue';
+
+  const closeModal = () => {
+    overlay.remove();
+  };
+
+  button.addEventListener('click', closeModal);
+  overlay.addEventListener('click', (event) => {
+    if (event.target === overlay) {
+      closeModal();
+    }
+  });
+
+  modal.append(icon, title, text, button);
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
+
+  requestAnimationFrame(() => {
+    overlay.classList.add('is-visible');
+  });
+}
+
 function setNewsletterStatus(form, message, isSuccess = true) {
   const status = form.querySelector('.newsletter-status');
 
@@ -54,6 +105,7 @@ function handleFooterNewsletterSubmit(event) {
 
   setNewsletterStatus(form, 'Subscribed successfully!', true);
   form.reset();
+  showNewsletterPopup(`Thank you for subscribing with ${email}. You will now receive updates from Furniro.`);
 }
 
 function attachFooterNewsletterHandler() {
