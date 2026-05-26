@@ -48,6 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
             return `../${src}`;
         }
 
+        if (/^image\s+\d+\.png$/i.test(src)) {
+            return `../Shop/${src}`;
+        }
+
         return `../${src}`;
     }
 
