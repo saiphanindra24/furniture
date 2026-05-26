@@ -1,3 +1,38 @@
+// Toast notification function
+function showToast(message, type = 'info') {
+    let toast = document.querySelector('.newsletter-toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.className = 'newsletter-toast';
+        toast.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 9999;
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+        `;
+        document.body.appendChild(toast);
+    }
+
+    toast.textContent = message;
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateY(0)';
+
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(-20px)';
+    }, 3000);
+}
+
 // Load shared footer on all pages
 function loadSharedFooter() {
     // Detect current page location to set correct relative paths
@@ -100,7 +135,7 @@ function loadSharedFooter() {
         cartPath = '../Home/cart.html';
     }
 
-    fetch(assetsPath + 'footer.html')
+    fetch(assetsPath + 'components/footer.html')
         .then(response => response.text())
         .then(html => {
             // Create temporary container to parse HTML
@@ -154,14 +189,14 @@ function initNewsletterSubscription() {
         const email = emailInput.value.trim();
 
         if (!email) {
-            AlertManager.show('Please enter your email address', 'error');
+            showToast('Please enter your email address', 'error');
             return;
         }
 
         // Email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-            AlertManager.show('Please enter a valid email address', 'error');
+            showToast('Please enter a valid email address', 'error');
             return;
         }
 
@@ -170,10 +205,10 @@ function initNewsletterSubscription() {
         if (!subscribers.includes(email)) {
             subscribers.push(email);
             localStorage.setItem('subscribers', JSON.stringify(subscribers));
-            AlertManager.show('✓ Successfully subscribed! Check your email for updates.', 'success');
+            showToast('🎉 Subscribed to FURNIRO', 'success');
             emailInput.value = '';
         } else {
-            AlertManager.show('This email is already subscribed!', 'info');
+            showToast('This email is already subscribed!', 'info');
         }
     });
 }
