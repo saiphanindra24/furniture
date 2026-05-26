@@ -18,6 +18,34 @@ document.addEventListener('DOMContentLoaded', () => {
         return parseInt(cleaned) || 0;
     }
 
+    function normalizeImageSrc(src) {
+        if (!src) {
+            return 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=150&auto=format&fit=crop&q=80';
+        }
+
+        if (src.startsWith('http://') || src.startsWith('https://') || src.startsWith('data:')) {
+            return src;
+        }
+
+        if (src.startsWith('../')) {
+            return src;
+        }
+
+        if (src.startsWith('Images/')) {
+            return `../Home/${src}`;
+        }
+
+        if (src.startsWith('Home/Images/')) {
+            return `../${src}`;
+        }
+
+        if (src.startsWith('assets/')) {
+            return `../${src}`;
+        }
+
+        return `../${src}`;
+    }
+
     function loadCartItems() {
         try {
             const rawCart = localStorage.getItem('cart') || localStorage.getItem('cartItems');
@@ -29,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         name: item.name || item.title || `Item ${idx + 1}`,
                         qty: parseInt(item.qty || item.quantity || 1, 10),
                         unitPrice: (typeof item.price === 'number') ? item.price : parsePrice(item.price || item.unitPrice || '0'),
-                        img: item.image || item.img || 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=150&auto=format&fit=crop&q=80',
+                        img: normalizeImageSrc(item.image || item.img || 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=150&auto=format&fit=crop&q=80'),
                         sub: item.sub || item.category || 'Furniture Item'
                     }));
                 }
