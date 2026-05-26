@@ -23,6 +23,34 @@ document.addEventListener('DOMContentLoaded', () => {
         return parseInt(cleaned) || 0;
     }
 
+    function getNormalizedImageSrc(src) {
+        if (!src) {
+            return '../Home/Images/Sofa.png';
+        }
+
+        if (src.startsWith('http://') || src.startsWith('https://') || src.startsWith('data:')) {
+            return src;
+        }
+
+        if (src.startsWith('../')) {
+            return src;
+        }
+
+        if (src.startsWith('Images/')) {
+            return `../Home/${src}`;
+        }
+
+        if (src.startsWith('Shop/')) {
+            return `../${src}`;
+        }
+
+        if (src.startsWith('assets/')) {
+            return `../${src}`;
+        }
+
+        return src;
+    }
+
     // 2. Load and render dynamic order summary from localStorage
     function renderOrderSummary() {
         const summaryContainer = document.querySelector('.order-summary');
@@ -63,11 +91,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 const itemQty = parseInt(item.qty || item.quantity || 1, 10);
                 const itemSubtotal = numericPrice * itemQty;
                 subtotal += itemSubtotal;
+                const imageSrc = getNormalizedImageSrc(item.image || item.img);
 
                 const itemEl = document.createElement('div');
                 itemEl.className = 'summary-item';
                 itemEl.innerHTML = `
-                    <span class="product-name">${item.name} <span class="quantity">x ${itemQty}</span></span>
+                    <div class="summary-product">
+                        <img src="${imageSrc}" alt="${item.name}" class="summary-product__image" onerror="this.onerror=null; this.src='../Home/Images/Sofa.png'">
+                        <div class="summary-product__info">
+                            <span class="product-name">${item.name}</span>
+                            <span class="quantity">x ${itemQty}</span>
+                        </div>
+                    </div>
                     <span class="product-price">${formatCurrency(itemSubtotal)}</span>
                 `;
                 lastInserted.after(itemEl);
