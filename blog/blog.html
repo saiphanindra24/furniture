@@ -13,41 +13,22 @@
         rel="stylesheet">
 
     <!-- Font Awesome -->
+        <link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
     <!-- CSS -->
     <link rel="stylesheet" href="blog.css">
-    <link rel="stylesheet" href="../assets/navbar.css">
-    <link rel="stylesheet" href="../assets/footer.css">
+    <link rel="stylesheet" href="../assets/components/navbar.css">
+<link rel="stylesheet" href="../assets/components/footer.css">
 </head>
 
 <body>
 
-    <header class="site-navbar">
-        <div class="site-navbar__inner">
-            <a href="../Home/Home.html" class="site-navbar__brand">
-                <img src="../assets/logo.png" alt="Furniro logo">
-                <span>Furniro</span>
-            </a>
-
-            <nav class="site-navbar__menu" aria-label="Primary navigation">
-                <a href="../Home/Home.html" class="site-navbar__link">Home</a>
-                <a href="../Shop/index.html" class="site-navbar__link">Shop</a>
-                <a href="blog.html" class="site-navbar__link active">About</a>
-                <a href="../checkout/contact.html" class="site-navbar__link">Contact</a>
-            </nav>
-
-            <div class="site-navbar__actions">
-                <a href="../Home/Home.html" class="site-navbar__icon" aria-label="Account"><i class="fa-regular fa-user"></i></a>
-                <a href="../Shop/index.html" class="site-navbar__icon" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
-                <a href="../Wishlist/Wishlist.html" class="site-navbar__icon" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></a>
-                <a href="../Home/cart.html" class="site-navbar__icon" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i></a>
-            </div>
-
-        </div>
-
-    </header>
-
+    
+    <div id="navbar"></div>
     <!-- ================= HERO SECTION ================= -->
 
     <section class="hero">
@@ -497,100 +478,11 @@
     </section>
 
     <!-- ================= FOOTER ================= -->
-
-    <footer class="footer">
-
-        <div class="container footer-container">
-
-            <!-- COLUMN -->
-
-            <div class="footer-col brand-col">
-
-                <h2>Furniro.</h2>
-
-                <address>
-                    400 University Drive Suite 200 Coral Gables,
-                    <br>
-                    FL 33134 USA
-                </address>
-
-            </div>
-
-            <!-- COLUMN -->
-
-            <div class="footer-col">
-
-                <h3>Links</h3>
-
-                <ul>
-
-                    <li><a href="#">Home</a></li>
-
-                    <li><a href="#">Shop</a></li>
-
-                    <li><a href="blog.html">About</a></li>
-
-                    <li><a href="../checkout/contact.html">Contact</a></li>
-
-                </ul>
-
-            </div>
-
-            <!-- COLUMN -->
-
-            <div class="footer-col">
-
-                <h3>Help</h3>
-
-                <ul>
-
-                    <li><a href="#">Payment Options</a></li>
-
-                    <li><a href="../Returns/Returns.html">Returns</a></li>
-
-                    <li><a href="../Privacy Policy/Privacy.html">Privacy Policies</a></li>
-
-                </ul>
-
-            </div>
-
-            <!-- COLUMN -->
-
-            <div class="footer-col">
-
-                <h3>Newsletter</h3>
-
-                <form class="newsletter-form">
-
-                    <input type="email" placeholder="Enter Your Email Address">
-
-                    <button type="submit">
-                        SUBSCRIBE
-                    </button>
-
-                </form>
-
-            </div>
-
-        </div>
-
-        <!-- FOOTER BOTTOM -->
-
-        <div class="container">
-
-            <div class="footer-bottom">
-
-                <p>
-                    2023 furino. All rights reserved
-                </p>
-
-            </div>
-
-        </div>
-
-    </footer>
+    <div id="footer"></div>
+  
     <script src="blog.js"></script>
-    <script src="../assets/footer.js"></script>
+    <script src="../assets/components/layout.js"></script>
+    <script src="../assets/components/cart-count.js"></script>
 </body>
 
 </html>

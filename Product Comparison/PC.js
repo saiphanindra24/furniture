@@ -590,29 +590,4 @@
         }
     });
 
-    if (!document.querySelector('.premium-toast')) {
-        const style = document.createElement('style');
-        style.textContent = `
-            .premium-toast {
-                position: fixed;
-                bottom: 28px;
-                right: 28px;
-                background: #b88e2f;
-                color: #fff;
-                padding: 12px 18px;
-                border-radius: 999px;
-                font-family: 'Jost', sans-serif;
-                box-shadow: 0 12px 30px rgba(0,0,0,0.16);
-                opacity: 0;
-                transform: translateY(16px);
-                transition: opacity 0.25s ease, transform 0.25s ease;
-                z-index: 1000;
-            }
-            .premium-toast.show {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        `;
-        document.head.appendChild(style);
-    }
 });
