@@ -111,6 +111,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const cardExpiryDisplay = document.getElementById('card-expiry-display');
     const virtualCard = document.getElementById('virtual-card');
 
+    // Duplicate card display elements
+    const duplicateCardNumDisplay = document.getElementById('duplicate-card-num');
+    const duplicateCardHolderDisplay = document.getElementById('duplicate-card-holder');
+    const duplicateCardExpiryDisplay = document.getElementById('duplicate-card-expiry');
+    const duplicateCard = document.getElementById('duplicate-card');
+
     const tabButtons = document.querySelectorAll('.tab-btn');
     const tabPanels = document.querySelectorAll('.tab-content');
 
@@ -394,17 +400,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 displayVal += '•';
             }
             cardNumDisplay.textContent = displayVal;
+            duplicateCardNumDisplay.textContent = displayVal;
         } else {
             cardNumDisplay.textContent = '•••• •••• •••• ••••';
+            duplicateCardNumDisplay.textContent = '•••• •••• •••• ••••';
         }
     });
 
     // Card Holder Input mirror
     cardHolderInput.addEventListener('input', (e) => {
         let val = e.target.value.toUpperCase();
-        
+
         // Remove numeric/special characters for realistic names (optional, let's keep it relaxed but uppercase)
         cardHolderDisplay.textContent = val.length > 0 ? val : 'FULL NAME';
+        duplicateCardHolderDisplay.textContent = val.length > 0 ? val : 'FULL NAME';
     });
 
     // Card Expiry Date formatter & mirror
@@ -425,8 +434,10 @@ document.addEventListener('DOMContentLoaded', () => {
             else if (val.length === 2) displayVal += '/YY';
             else if (val.length === 3) displayVal += 'Y';
             cardExpiryDisplay.textContent = displayVal;
+            duplicateCardExpiryDisplay.textContent = displayVal;
         } else {
             cardExpiryDisplay.textContent = 'MM/YY';
+            duplicateCardExpiryDisplay.textContent = 'MM/YY';
         }
     });
 
@@ -441,11 +452,19 @@ document.addEventListener('DOMContentLoaded', () => {
         input.addEventListener('focus', () => {
             virtualCard.style.transform = 'translateY(-10px) rotateX(4deg) scale(1.03)';
             virtualCard.style.boxShadow = '0 30px 60px rgba(184, 142, 47, 0.2), 0 0 20px rgba(184, 142, 47, 0.1)';
+            if (duplicateCard) {
+                duplicateCard.style.transform = 'translateY(5px) translateX(0px) scale(0.95)';
+                duplicateCard.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+            }
         });
 
         input.addEventListener('blur', () => {
             virtualCard.style.transform = '';
             virtualCard.style.boxShadow = '';
+            if (duplicateCard) {
+                duplicateCard.style.transform = 'translateY(15px) translateX(-10px)';
+                duplicateCard.style.boxShadow = '';
+            }
         });
     });
 
