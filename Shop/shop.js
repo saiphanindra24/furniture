@@ -3,10 +3,11 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // =========================================
-    // CATEGORY URL PARAMETER
+    // URL PARAMETERS (CATEGORY & SEARCH)
     // =========================================
     const urlParams = new URLSearchParams(window.location.search);
     const categoryFilter = urlParams.get('category')?.toLowerCase();
+    const searchQuery = urlParams.get('search')?.toLowerCase() || '';
 
     if (categoryFilter) {
         const formattedCategory = categoryFilter.charAt(0).toUpperCase() + categoryFilter.slice(1);
@@ -199,6 +200,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const discountFilter =
         document.getElementById('discount-filter');
+
+    // Pre-populate search input if search query exists in URL
+    if (searchQuery && searchInput) {
+        searchInput.value = searchQuery;
+    }
 
     const newFilter =
         document.getElementById('new-filter');
@@ -667,5 +673,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================
 
     applyFilters();
+
+    // If search query from URL, apply it immediately
+    if (searchQuery) {
+        applyFilters();
+    }
 
 });
