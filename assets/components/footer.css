@@ -76,6 +76,7 @@
 }
 
 .newsletter-form button{
+<<<<<<< HEAD
     border: none !important;
     background: #B88E2F !important;
     color: #ffffff !important;
@@ -95,6 +96,32 @@
     background: #967325 !important;
     color: #ffffff !important;
     transform: translateY(-1px) !important;
+=======
+    border:none;
+    background:none;
+    border-bottom:1px solid #000;
+    padding:8px 0;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+    color:#000;
+}
+
+.footer .newsletter-form button:hover{
+    color:#B88E2F;
+    border-color:#B88E2F;
+}
+
+.newsletter-status{
+    margin-top:12px;
+    min-height:1.5em;
+    font-size:14px;
+    color:#2f855a;
+}
+
+.newsletter-status.error{
+    color:#c53030;
+>>>>>>> 2d095fbc2228bc994550240c2b566825fcb86395
 }
 
 .footer-bottom{

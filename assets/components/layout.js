@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 async function loadComponent(id, file, callback){
     try {
         const response = await fetch(file);
@@ -13,6 +14,9 @@ async function loadComponent(id, file, callback){
         console.error("Error loading component:", e);
     }
 }
+=======
+async function loadComponent(id, file, callback) {
+>>>>>>> 2d095fbc2228bc994550240c2b566825fcb86395
 
 function showNewsletterPopup(success, data) {
     // Remove existing modal if any
@@ -39,6 +43,7 @@ function showNewsletterPopup(success, data) {
     overlay.style.opacity = '0';
     overlay.style.transition = 'opacity 0.25s ease';
 
+<<<<<<< HEAD
     // Create modal container
     const container = document.createElement('div');
     container.style.background = '#ffffff';
@@ -160,10 +165,57 @@ function handleFooterNewsletterSubmit(event) {
     }
 
     showNewsletterPopup(true, email);
+=======
+    const target = document.getElementById(id);
+
+    if (!target) {
+        return;
+    }
+
+    target.innerHTML = data;
+
+    if (typeof callback === 'function') {
+        callback(target);
+    }
+}
+
+function setNewsletterStatus(form, message, isSuccess = true) {
+    const status = form.querySelector('.newsletter-status');
+
+    if (!status) {
+        return;
+    }
+
+    status.textContent = message;
+    status.className = `newsletter-status ${isSuccess ? 'success' : 'error'}`;
+}
+
+function handleFooterNewsletterSubmit(event) {
+    const form = event.target.closest('.newsletter-form');
+
+    if (!form) {
+        return;
+    }
+
+    const emailInput = form.querySelector('input[type="email"]');
+    const email = emailInput?.value.trim() || '';
+
+    event.preventDefault();
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(email)) {
+        setNewsletterStatus(form, 'Please enter a valid email address.', false);
+        return;
+    }
+
+    setNewsletterStatus(form, 'Subscribed successfully!', true);
+>>>>>>> 2d095fbc2228bc994550240c2b566825fcb86395
     form.reset();
 }
 
 function attachFooterNewsletterHandler() {
+<<<<<<< HEAD
     const form = document.querySelector('.newsletter-form');
     if (form) {
         form.removeEventListener('submit', handleFooterNewsletterSubmit);
@@ -178,10 +230,31 @@ function attachFooterNewsletterHandler() {
             input.setAttribute('required', 'true');
         }
     }
+=======
+    const form = document.querySelector('.footer .newsletter-form');
+
+    if (!form) {
+        return;
+    }
+
+    form.removeEventListener('submit', handleFooterNewsletterSubmit);
+    form.addEventListener('submit', handleFooterNewsletterSubmit);
+>>>>>>> 2d095fbc2228bc994550240c2b566825fcb86395
 }
 
 loadComponent("navbar", "../assets/components/navbar.html");
 
+<<<<<<< HEAD
 loadComponent("footer", "../assets/components/footer.html", () => {
     attachFooterNewsletterHandler();
 });
+=======
+loadComponent("footer", "../assets/components/footer.html", attachFooterNewsletterHandler);
+
+loadComponent("cart-count", "../assets/components/cart-count.html");
+
+loadComponent("search-bar", "../assets/components/search-bar.html");
+
+
+loadComponent('returns', '../Returns/Returns.html')
+>>>>>>> 2d095fbc2228bc994550240c2b566825fcb86395
