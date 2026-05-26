@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'syltherine', name: 'Syltherine', qty: 1, unitPrice: 2500000, img: 'https://images.unsplash.com/photo-1592078615290-033ee584e267?q=80&w=150&auto=format&fit=crop', sub: 'Furniture Item' },
         { id: 'muggo', name: 'Muggo', qty: 1, unitPrice: 150000, img: 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?q=80&w=150&auto=format&fit=crop', sub: 'Furniture Item' }
     ];
+    const fallbackImage = '../Home/Images/Sofa.png';
 
     function parsePrice(priceStr) {
         if (!priceStr) return 0;
@@ -20,14 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function normalizeImageSrc(src) {
         if (!src) {
-            return 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=150&auto=format&fit=crop&q=80';
+            return fallbackImage;
         }
 
         if (src.startsWith('http://') || src.startsWith('https://') || src.startsWith('data:')) {
             return src;
         }
 
-        if (src.startsWith('../')) {
+        if (src.startsWith('../') || src.startsWith('./') || src.startsWith('/')) {
             return src;
         }
 
@@ -41,6 +42,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (src.startsWith('assets/')) {
             return `../${src}`;
+        }
+
+        if (src.startsWith('Shop/')) {
+            return `../${src}`;
+        }
+
+        if (/^image\s+\d+\.png$/i.test(src)) {
+            return `../Shop/${src}`;
         }
 
         return `../${src}`;
@@ -230,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
             card.className = 'product-card';
             card.id = `item-${item.id}`;
             card.innerHTML = `
-                <img src="${item.img}" alt="${item.name}" class="product-image">
+                <img src="${item.img}" alt="${item.name}" class="product-image" onerror="this.onerror=null; this.src='${fallbackImage}'">
                 <div class="product-details">
                     <div class="product-info">
                         <h3 class="product-name">${item.name}</h3>
