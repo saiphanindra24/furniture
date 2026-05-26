@@ -1,74 +1,123 @@
-async function loadComponent(id, file, callback) {
-
+﻿async function loadComponent(id, file, callback) {
+  try {
     const response = await fetch(file);
 
-    const data = await response.text();
-
-    const target = document.getElementById(id);
-
-    if (!target) {
-        return;
+    if (!response.ok) {
+      throw new Error(`Failed to load ${file}: ${response.status}`);
     }
 
-    target.innerHTML = data;
+    const data = await response.text();
+    const element = document.getElementById(id);
+
+    if (!element) {
+      return;
+    }
+
+    element.innerHTML = data;
 
     if (typeof callback === 'function') {
-        callback(target);
+      callback(element);
     }
+  } catch (error) {
+    console.error('Error loading component:', error);
+  }
+}
+
+function showNewsletterPopup(message) {
+  const existingModal = document.getElementById('newsletter-modal');
+
+  if (existingModal) {
+    existingModal.remove();
+  }
+
+  const overlay = document.createElement('div');
+  overlay.id = 'newsletter-modal';
+  overlay.className = 'newsletter-modal';
+
+  const modal = document.createElement('div');
+  modal.className = 'newsletter-modal__card';
+
+  const icon = document.createElement('div');
+  icon.className = 'newsletter-modal__icon';
+  icon.textContent = '✓';
+
+  const title = document.createElement('h3');
+  title.className = 'newsletter-modal__title';
+  title.textContent = 'Subscription Successful!';
+
+  const text = document.createElement('p');
+  text.className = 'newsletter-modal__text';
+  text.textContent = message;
+
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'newsletter-modal__button';
+  button.textContent = 'Continue';
+
+  const closeModal = () => {
+    overlay.remove();
+  };
+
+  button.addEventListener('click', closeModal);
+  overlay.addEventListener('click', (event) => {
+    if (event.target === overlay) {
+      closeModal();
+    }
+  });
+
+  modal.append(icon, title, text, button);
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
+
+  requestAnimationFrame(() => {
+    overlay.classList.add('is-visible');
+  });
 }
 
 function setNewsletterStatus(form, message, isSuccess = true) {
-    const status = form.querySelector('.newsletter-status');
+  const status = form.querySelector('.newsletter-status');
 
-    if (!status) {
-        return;
-    }
+  if (!status) {
+    return;
+  }
 
-    status.textContent = message;
-    status.className = `newsletter-status ${isSuccess ? 'success' : 'error'}`;
+  status.textContent = message;
+  status.className = `newsletter-status ${isSuccess ? 'success' : 'error'}`;
 }
 
 function handleFooterNewsletterSubmit(event) {
-    const form = event.target.closest('.newsletter-form');
+  event.preventDefault();
 
-    if (!form) {
-        return;
-    }
+  const form = event.target.closest('.newsletter-form');
 
-    const emailInput = form.querySelector('input[type="email"]');
-    const email = emailInput?.value.trim() || '';
+  if (!form) {
+    return;
+  }
 
-    event.preventDefault();
+  const emailInput = form.querySelector('input[type="email"]');
+  const email = emailInput?.value.trim() || '';
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email)) {
+    setNewsletterStatus(form, 'Please enter a valid email address.', false);
+    return;
+  }
 
-    if (!emailPattern.test(email)) {
-        setNewsletterStatus(form, 'Please enter a valid email address.', false);
-        return;
-    }
-
-    setNewsletterStatus(form, 'Subscribed successfully!', true);
-    form.reset();
+  setNewsletterStatus(form, 'Subscribed successfully!', true);
+  form.reset();
+  showNewsletterPopup(`Thank you for subscribing with ${email}. You will now receive updates from Furniro.`);
 }
 
 function attachFooterNewsletterHandler() {
-    const form = document.querySelector('.footer .newsletter-form');
+  const form = document.querySelector('.footer .newsletter-form');
 
-    if (!form) {
-        return;
-    }
+  if (!form) {
+    return;
+  }
 
-    form.removeEventListener('submit', handleFooterNewsletterSubmit);
-    form.addEventListener('submit', handleFooterNewsletterSubmit);
+  form.removeEventListener('submit', handleFooterNewsletterSubmit);
+  form.addEventListener('submit', handleFooterNewsletterSubmit);
 }
 
-loadComponent("navbar", "../assets/components/navbar.html");
-
-loadComponent("footer", "../assets/components/footer.html", attachFooterNewsletterHandler);
-
-loadComponent("cart-count", "../assets/components/cart-count.html");
-
-loadComponent("search-bar", "../assets/components/search-bar.html");
-
-
-loadComponent('returns', '../Returns/Returns.html')
+loadComponent('navbar', '../assets/components/navbar.html');
+loadComponent('footer', '../assets/components/footer.html', attachFooterNewsletterHandler);
