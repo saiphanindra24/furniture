@@ -26,6 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // =========================================
+    // SHOW MORE BUTTON FUNCTIONALITY
+    // =========================================
+    const showMoreBtn = document.querySelector('.show-more-btn');
+    if (showMoreBtn) {
+        showMoreBtn.addEventListener('click', () => {
+            window.location.href = '../Shop/index.html';
+        });
+    }
+
+    // =========================================
     // TOAST NOTIFICATIONS
     // =========================================
     function showToast(message) {
@@ -92,12 +102,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             localStorage.setItem('cart', JSON.stringify(cart));
             localStorage.setItem('cartItems', JSON.stringify(cart));
-            
+
             const newCartCount = cart.reduce((sum, item) => sum + (item.quantity || item.qty || 1), 0);
             localStorage.setItem('cartCount', newCartCount);
-            
+
             updateCartCountBadge();
-            
+
             // Redirect to cart.html
             window.location.href = "cart.html";
         }
@@ -126,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const productName = encodeURIComponent(name);
                 const productImg = encodeURIComponent(image);
                 const productUrl = `${window.location.origin}/singleproduct/product.html?name=${productName}&img=${productImg}`;
-                
+
                 navigator.clipboard.writeText(productUrl).then(() => {
                     showToast('🔗 Product link copied to clipboard!');
                 }).catch(err => {

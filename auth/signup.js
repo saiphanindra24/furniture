@@ -1,80 +1,87 @@
-const signupForm = document.getElementById("signup-form");
+document.addEventListener('DOMContentLoaded', () => {
+  const signupForm = document.getElementById('signup-form');
+  const signupName = document.getElementById('signup-name');
+  const signupEmail = document.getElementById('signup-email');
+  const signupPassword = document.getElementById('signup-password');
+  const signupConfirmPassword = document.getElementById('signup-confirm-password');
 
-signupForm.addEventListener("submit", (event) => {
-
+  signupForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    /* GET VALUES */
+    const name = signupName.value.trim();
+    const email = signupEmail.value.trim();
+    const password = signupPassword.value;
+    const confirmPassword = signupConfirmPassword.value;
 
-    const name =
-    document.getElementById("signup-name").value;
-
-    const email =
-    document.getElementById("signup-email").value;
-
-    const password =
-    document.getElementById("signup-password").value;
-
-    const confirmPassword =
-    document.getElementById("signup-confirm-password").value;
-
-    /* PASSWORD VALIDATION */
-
-    if(password !== confirmPassword){
-
-        alert("Passwords do not match");
-
-        return;
-
+    if (!name || !email || !password || !confirmPassword) {
+      showError('Please fill in all fields');
+      return;
     }
 
-    /* USER OBJECT */
+    const nameValidation = AuthUtils.validateName(name);
+    if (!nameValidation.valid) {
+      showError(nameValidation.message);
+      return;
+    }
 
-    const user = {
+    if (!AuthUtils.validateEmail(email)) {
+      showError('Please enter a valid email address');
+      return;
+    }
 
-        name: name,
+    const passwordValidation = AuthUtils.validatePassword(password);
+    if (!passwordValidation.valid) {
+      showError(passwordValidation.message);
+      return;
+    }
 
-        email: email,
+    if (password !== confirmPassword) {
+      showError('Passwords do not match');
+      return;
+    }
 
-        password: password
+    const existingUser = AuthUtils.findUser(email);
+    if (existingUser) {
+      showError('Email already registered. Please sign in instead.');
+      return;
+    }
 
+    const hashedPassword = AuthUtils.hashPassword(password);
+    const newUser = {
+      id: Date.now(),
+      name: name,
+      email: email,
+      password: hashedPassword,
+      createdAt: new Date().toISOString()
     };
 
-    /* GET EXISTING USERS */
+    AuthUtils.saveUser(newUser);
+    showSuccess('Account created successfully! Redirecting to login...');
 
-    const users =
-    JSON.parse(localStorage.getItem("users")) || [];
+    setTimeout(() => {
+      window.location.href = 'signin.html';
+    }, 1500);
+  });
 
-    /* CHECK EXISTING USER */
+  function showError(message) {
+    const existingError = document.querySelector('.auth-error');
+    if (existingError) existingError.remove();
 
-    const existingUser =
-    users.find(user => user.email === email);
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'auth-error';
+    errorDiv.textContent = message;
+    signupForm.insertBefore(errorDiv, signupForm.firstChild);
 
-    if(existingUser){
+    setTimeout(() => errorDiv.remove(), 5000);
+  }
 
-        alert("User already exists");
+  function showSuccess(message) {
+    const existingSuccess = document.querySelector('.auth-success');
+    if (existingSuccess) existingSuccess.remove();
 
-        return;
-
-    }
-
-    /* ADD USER */
-
-    users.push(user);
-
-    /* SAVE USERS */
-
-    localStorage.setItem(
-        "users",
-        JSON.stringify(users)
-    );
-
-    /* SUCCESS MESSAGE */
-
-    alert("Signup successful");
-
-    /* REDIRECT TO SIGNIN PAGE */
-
-    window.location.href = "signin.html";
-
+    const successDiv = document.createElement('div');
+    successDiv.className = 'auth-success';
+    successDiv.textContent = message;
+    signupForm.insertBefore(successDiv, signupForm.firstChild);
+  }
 });

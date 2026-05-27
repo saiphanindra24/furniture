@@ -335,19 +335,54 @@ body{
     .auth-section {
         padding:15px 10px;
     }
-    
+
     .auth-box {
         padding:30px 20px;
     }
-    
+
     .auth-box h2 {
         font-size:24px;
     }
-    
+
     #signup-form input,
     .auth-btn,
     .social-btn {
         font-size:13px;
         height:44px;
     }
+}
+
+/* ERROR AND SUCCESS MESSAGES */
+
+.auth-error,
+.auth-success {
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.auth-error {
+    background: #fee;
+    color: #c33;
+    border: 1px solid #fcc;
+}
+
+.auth-success {
+    background: #efe;
+    color: #3c3;
+    border: 1px solid #cfc;
 }
