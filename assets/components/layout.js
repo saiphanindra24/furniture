@@ -1,4 +1,4 @@
-﻿async function loadComponent(id, file, callback) {
+async function loadComponent(id, file, callback) {
   try {
     const response = await fetch(file);
 
@@ -120,4 +120,7 @@ function attachFooterNewsletterHandler() {
 }
 
 loadComponent('navbar', '../assets/components/navbar.html');
-loadComponent('footer', '../assets/components/footer.html', attachFooterNewsletterHandler);
+
+if (!/signin\.html$/i.test(window.location.pathname) && !/signup\.html$/i.test(window.location.pathname)) {
+  loadComponent('footer', '../assets/components/footer.html', attachFooterNewsletterHandler);
+}
