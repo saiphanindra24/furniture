@@ -23,6 +23,138 @@ async function loadComponent(id, file, callback) {
   }
 }
 
+function getLoggedInUser() {
+  try {
+    return JSON.parse(localStorage.getItem('loggedInUser') || 'null');
+  } catch (error) {
+    console.error('Failed to parse loggedInUser:', error);
+    return null;
+  }
+}
+
+function logoutUser() {
+  localStorage.removeItem('loggedInUser');
+  window.location.reload();
+}
+
+function updateNavbarAuthState(navbarElement) {
+  const authLink = navbarElement.querySelector('#auth-link');
+  const authMenu = navbarElement.querySelector('#auth-menu');
+  const profileName = navbarElement.querySelector('#profile-name');
+  const profileViewBtn = navbarElement.querySelector('#profile-view-btn');
+  const logoutBtn = navbarElement.querySelector('#logout-btn');
+
+  if (!authLink) {
+    return;
+  }
+
+  const user = getLoggedInUser();
+  const profileBadge = navbarElement.querySelector('#profile-badge');
+
+  function closeAuthMenu() {
+    if (authMenu) {
+      authMenu.classList.add('hidden');
+    }
+    authLink.setAttribute('aria-expanded', 'false');
+  }
+
+  function toggleAuthMenu() {
+    if (!authMenu) {
+      return;
+    }
+
+    authMenu.classList.toggle('hidden');
+    const expanded = authMenu.classList.contains('hidden') ? 'false' : 'true';
+    authLink.setAttribute('aria-expanded', expanded);
+  }
+
+  if (user && user.name) {
+    authLink.type = 'button';
+    authLink.title = `Account for ${user.name}`;
+
+    if (profileBadge) {
+      if (user.profilePic && user.profilePic !== '../assets/default-profile.png') {
+        profileBadge.innerHTML = `<img src="${user.profilePic}" alt="${user.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">`;
+        profileBadge.classList.remove('profile-badge--initial');
+      } else {
+        const userInitial = user.name.trim().charAt(0).toUpperCase() || 'U';
+        profileBadge.textContent = userInitial;
+        profileBadge.classList.add('profile-badge--initial');
+      }
+    } else {
+      authLink.innerHTML = '<i class="fa fa-user"></i>';
+    }
+
+    if (authMenu) {
+      profileName.textContent = user.name;
+      authMenu.classList.add('hidden');
+    }
+
+    if (authLink._authHandler) {
+      authLink.removeEventListener('click', authLink._authHandler);
+    }
+
+    authLink._authHandler = (event) => {
+      event.preventDefault();
+      toggleAuthMenu();
+    };
+    authLink.addEventListener('click', authLink._authHandler);
+
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', () => {
+        logoutUser();
+      });
+    }
+
+    if (profileViewBtn) {
+      profileViewBtn.addEventListener('click', () => {
+        closeAuthMenu();
+        window.location.href = '../auth/profile.html';
+      });
+    }
+
+    const ordersViewBtn = navbarElement.querySelector('#orders-view-btn');
+    if (ordersViewBtn) {
+      ordersViewBtn.addEventListener('click', () => {
+        closeAuthMenu();
+        window.location.href = '../auth/orders.html';
+      });
+    }
+
+    if (!window.__navbarProfileCloseListenerAdded) {
+      window.__navbarProfileCloseListenerAdded = true;
+      document.addEventListener('click', (event) => {
+        if (!event.target.closest('#auth-profile-container')) {
+          closeAuthMenu();
+        }
+      });
+    }
+  } else {
+    authLink.type = 'button';
+    authLink.title = 'Sign in';
+
+    if (profileBadge) {
+      profileBadge.innerHTML = '<i class="fa fa-user"></i>';
+      profileBadge.classList.remove('profile-badge--initial');
+    } else {
+      authLink.innerHTML = '<i class="fa fa-user"></i>';
+    }
+
+    if (authMenu) {
+      authMenu.classList.add('hidden');
+    }
+
+    if (authLink._authHandler) {
+      authLink.removeEventListener('click', authLink._authHandler);
+      delete authLink._authHandler;
+    }
+
+    authLink.addEventListener('click', () => {
+      window.location.href = '../auth/signin.html';
+    });
+  }
+}
+
 function showNewsletterPopup(message) {
   const existingModal = document.getElementById('newsletter-modal');
 
@@ -119,7 +251,7 @@ function attachFooterNewsletterHandler() {
   form.addEventListener('submit', handleFooterNewsletterSubmit);
 }
 
-loadComponent('navbar', '../assets/components/navbar.html');
+loadComponent('navbar', '../assets/components/navbar.html', updateNavbarAuthState);
 
 if (!/signin\.html$/i.test(window.location.pathname) && !/signup\.html$/i.test(window.location.pathname)) {
   loadComponent('footer', '../assets/components/footer.html', attachFooterNewsletterHandler);

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Furniro</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Poppins Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Navbar CSS -->
+    <link href="../assets/components/navbar.css" rel="stylesheet">
+
+    <!-- Footer CSS -->
+    <link href="../assets/components/footer.css" rel="stylesheet">
+
+    <!-- Profile CSS -->
+    <link href="profile.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <div id="navbar"></div>
+
+    <!-- PROFILE SECTION -->
+    <section class="profile-section">
+        <div class="profile-container">
+
+            <!-- Profile Header -->
+            <div class="profile-header">
+                <h1>My Profile</h1>
+                <p>Manage your personal information and profile picture</p>
+            </div>
+
+            <!-- Profile Form -->
+            <form id="profile-form" class="profile-form">
+
+                <!-- Profile Picture Section -->
+                <div class="profile-picture-section">
+                    <div class="profile-picture-container">
+                        <img id="profile-pic-preview" src="../assets/default-profile.png" alt="Profile Picture">
+                        <label for="profile-pic-input" class="profile-pic-upload-btn">
+                            <i class="fa fa-camera"></i>
+                            <span>Change Photo</span>
+                        </label>
+                        <input 
+                            type="file" 
+                            id="profile-pic-input" 
+                            name="profilePic" 
+                            accept="image/*"
+                            style="display: none;">
+                    </div>
+                </div>
+
+                <!-- Form Fields -->
+                <div class="form-section">
+
+                    <!-- Name Field -->
+                    <div class="form-group">
+                        <label for="profile-name">Full Name</label>
+                        <input 
+                            type="text" 
+                            id="profile-name" 
+                            name="name" 
+                            placeholder="Enter your full name"
+                            required>
+                    </div>
+
+                    <!-- Email Field (Read-only) -->
+                    <div class="form-group">
+                        <label for="profile-email">Email Address</label>
+                        <input 
+                            type="email" 
+                            id="profile-email" 
+                            name="email" 
+                            placeholder="Email"
+                            readonly>
+                    </div>
+
+                    <!-- Phone Field -->
+                    <div class="form-group">
+                        <label for="profile-phone">Phone Number</label>
+                        <input 
+                            type="tel" 
+                            id="profile-phone" 
+                            name="phone" 
+                            placeholder="Enter your phone number"
+                            pattern="[0-9+\-\s()]*">
+                    </div>
+
+                    <!-- Address Field -->
+                    <div class="form-group">
+                        <label for="profile-address">Address</label>
+                        <textarea 
+                            id="profile-address" 
+                            name="address" 
+                            placeholder="Enter your address"
+                            rows="3"></textarea>
+                    </div>
+
+                    <!-- City Field -->
+                    <div class="form-group">
+                        <label for="profile-city">City</label>
+                        <input 
+                            type="text" 
+                            id="profile-city" 
+                            name="city" 
+                            placeholder="Enter your city">
+                    </div>
+
+                    <!-- Postal Code Field -->
+                    <div class="form-group">
+                        <label for="profile-postal">Postal Code</label>
+                        <input 
+                            type="text" 
+                            id="profile-postal" 
+                            name="postal" 
+                            placeholder="Enter your postal code">
+                    </div>
+
+                </div>
+
+                <!-- Form Actions -->
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <button type="button" class="btn btn-secondary" id="cancel-btn">Cancel</button>
+                </div>
+
+            </form>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div id="footer"></div>
+
+    <!-- SHARED JS -->
+    <script src="../assets/components/layout.js"></script>
+
+    <!-- AUTH HELPERS -->
+    <script src="auth.js"></script>
+
+    <!-- PROFILE JS -->
+    <script src="profile.js"></script>
+
+</body>
+
+</html>

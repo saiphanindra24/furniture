@@ -522,19 +522,78 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Success message
         alert(`🎉 Payment of ${formatRupiah(total)} successfully processed! Thank you for purchasing from Furniro.`);
-        
-        // Reset form & states
-        checkoutForm.reset();
-        state.items.forEach(item => item.qty = 1);
-        saveCartItemsToStorage();
-        renderCartItems();
-        state.appliedCoupon = null;
-        couponInput.value = '';
-        couponMsgEl.textContent = '';
-        cardNumDisplay.textContent = '•••• •••• •••• ••••';
-        cardHolderDisplay.textContent = 'FULL NAME';
-        cardExpiryDisplay.textContent = 'MM/YY';
-        updatePrices();
+
+        // Build order object and persist it, then redirect to confirmation
+        try {
+            const currentUser = JSON.parse(localStorage.getItem('loggedInUser') || 'null');
+
+            const orderId = `ORD-${Date.now()}-${Math.floor(Math.random() * 900 + 100)}`;
+            const subtotalCalc = subtotal;
+            const discountCalc = discount;
+            const shippingCalc = shipping;
+            const taxCalc = (Math.max(0, subtotalCalc - discountCalc)) * 0.10;
+            const totalCalc = Math.max(0, subtotalCalc - discountCalc) + shippingCalc + taxCalc;
+
+            const order = {
+                id: orderId,
+                items: state.items.map(i => ({ id: i.id, name: i.name, quantity: i.qty, price: i.unitPrice })),
+                subtotal: subtotalCalc,
+                discount: discountCalc,
+                shipping: shippingCalc,
+                tax: taxCalc,
+                totalAmount: totalCalc,
+                status: 'Pending',
+                createdAt: new Date().toISOString()
+            };
+
+            // Store order in localStorage under userOrders keyed by user email
+            const allOrders = JSON.parse(localStorage.getItem('userOrders') || '{}');
+            if (currentUser && currentUser.email) {
+                allOrders[currentUser.email] = allOrders[currentUser.email] || [];
+                allOrders[currentUser.email].unshift(order);
+                localStorage.setItem('userOrders', JSON.stringify(allOrders));
+            } else {
+                // For guest users, store under a guest key
+                const guestKey = '_guest_';
+                allOrders[guestKey] = allOrders[guestKey] || [];
+                allOrders[guestKey].unshift(order);
+                localStorage.setItem('userOrders', JSON.stringify(allOrders));
+            }
+
+            // Save last order id for quick access
+            localStorage.setItem('lastOrderId', orderId);
+
+            // Reset cart and UI
+            checkoutForm.reset();
+            state.items.forEach(item => item.qty = 1);
+            saveCartItemsToStorage();
+            renderCartItems();
+            state.appliedCoupon = null;
+            couponInput.value = '';
+            couponMsgEl.textContent = '';
+            cardNumDisplay.textContent = '•••• •••• •••• ••••';
+            cardHolderDisplay.textContent = 'FULL NAME';
+            cardExpiryDisplay.textContent = 'MM/YY';
+            updatePrices();
+
+            // Redirect to confirmation page with order id
+            window.location.href = `../auth/order-confirmation.html?orderId=${encodeURIComponent(orderId)}`;
+
+        } catch (err) {
+            console.error('Failed to save order:', err);
+            // Fallback reset
+            checkoutForm.reset();
+            state.items.forEach(item => item.qty = 1);
+            saveCartItemsToStorage();
+            renderCartItems();
+            state.appliedCoupon = null;
+            couponInput.value = '';
+            couponMsgEl.textContent = '';
+            cardNumDisplay.textContent = '•••• •••• •••• ••••';
+            cardHolderDisplay.textContent = 'FULL NAME';
+            cardExpiryDisplay.textContent = 'MM/YY';
+            updatePrices();
+        }
     });
 
     // --- Initial Setup Call ---

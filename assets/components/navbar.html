@@ -15,10 +15,21 @@
 
 <div class="site-navbar__actions">
 
-    <!-- User -->
-    <a href="../auth/signin.html" class="site-navbar__icon">
-        <i class="fa fa-user"></i>
-    </a>
+    <div class="site-navbar__profile" id="auth-profile-container">
+      <button type="button" class="site-navbar__icon" id="auth-link" aria-haspopup="true" aria-expanded="false">
+        <span class="profile-badge" id="profile-badge">
+          <i class="fa fa-user"></i>
+        </span>
+      </button>
+      <div class="site-navbar__profile-menu hidden" id="auth-menu">
+        <div class="profile-menu__header">
+          <span id="profile-name"></span>
+        </div>
+        <button type="button" class="profile-menu__item" id="profile-view-btn">Profile</button>
+        <button type="button" class="profile-menu__item" id="orders-view-btn">Orders</button>
+        <button type="button" class="profile-menu__item profile-menu__logout" id="logout-btn">Logout</button>
+      </div>
+    </div>
 
     <!-- Search -->
     <a href="../Shop/index.html" class="site-navbar__icon">

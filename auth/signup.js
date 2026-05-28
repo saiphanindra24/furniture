@@ -1,80 +1,54 @@
-const signupForm = document.getElementById("signup-form");
+﻿const signupForm = document.getElementById("signup-form");
+
+if (!signupForm) {
+    throw new Error('Signup form not found');
+}
 
 signupForm.addEventListener("submit", (event) => {
-
     event.preventDefault();
 
-    /* GET VALUES */
+    const name = document.getElementById("signup-name").value.trim();
+    const email = document.getElementById("signup-email").value.trim();
+    const password = document.getElementById("signup-password").value;
+    const confirmPassword = document.getElementById("signup-confirm-password").value;
 
-    const name =
-    document.getElementById("signup-name").value;
-
-    const email =
-    document.getElementById("signup-email").value;
-
-    const password =
-    document.getElementById("signup-password").value;
-
-    const confirmPassword =
-    document.getElementById("signup-confirm-password").value;
-
-    /* PASSWORD VALIDATION */
-
-    if(password !== confirmPassword){
-
-        alert("Passwords do not match");
-
+    if (!name || !email || !password || !confirmPassword) {
+        alert("Please fill in all fields.");
         return;
-
     }
 
-    /* USER OBJECT */
-
-    const user = {
-
-        name: name,
-
-        email: email,
-
-        password: password
-
-    };
-
-    /* GET EXISTING USERS */
-
-    const users =
-    JSON.parse(localStorage.getItem("users")) || [];
-
-    /* CHECK EXISTING USER */
-
-    const existingUser =
-    users.find(user => user.email === email);
-
-    if(existingUser){
-
-        alert("User already exists");
-
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
         return;
-
     }
 
-    /* ADD USER */
+    if (password.length < 6) {
+        alert("Password must be at least 6 characters long.");
+        return;
+    }
 
-    users.push(user);
+    if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return;
+    }
 
-    /* SAVE USERS */
+    const users = JSON.parse(localStorage.getItem("users") || '[]');
+    const existingUser = users.find(existing => existing.email === email);
 
-    localStorage.setItem(
-        "users",
-        JSON.stringify(users)
-    );
+    if (existingUser) {
+        alert("A user with that email already exists.");
+        return;
+    }
 
-    /* SUCCESS MESSAGE */
+    users.push({
+        name,
+        email,
+        password,
+        createdAt: new Date().toISOString()
+    });
 
-    alert("Signup successful");
-
-    /* REDIRECT TO SIGNIN PAGE */
-
+    localStorage.setItem("users", JSON.stringify(users));
+    alert("Signup successful. You can now sign in.");
     window.location.href = "signin.html";
-
 });
