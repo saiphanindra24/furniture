@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders - Furniro</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Poppins Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Navbar CSS -->
+    <link href="../assets/components/navbar.css" rel="stylesheet">
+
+    <!-- Footer CSS -->
+    <link href="../assets/components/footer.css" rel="stylesheet">
+
+    <!-- Orders CSS -->
+    <link href="orders.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <div id="navbar"></div>
+
+    <!-- ORDERS SECTION -->
+    <section class="orders-section">
+        <div class="orders-container">
+
+            <!-- Orders Header -->
+            <div class="orders-header">
+                <h1>My Orders</h1>
+                <p>Track and manage your placed orders</p>
+            </div>
+
+            <!-- Orders List -->
+            <div id="orders-list" class="orders-list">
+                <!-- Orders will be populated here by JavaScript -->
+            </div>
+
+            <!-- No Orders Message -->
+            <div id="no-orders-message" class="no-orders-message" style="display: none;">
+                <div class="no-orders-content">
+                    <i class="fa fa-shopping-bag"></i>
+                    <h2>No Orders Yet</h2>
+                    <p>You haven't placed any orders yet. Start shopping now!</p>
+                    <a href="../Shop/index.html" class="btn btn-primary">Continue Shopping</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div id="footer"></div>
+
+    <!-- SHARED JS -->
+    <script src="../assets/components/layout.js"></script>
+
+    <!-- AUTH HELPERS -->
+    <script src="auth.js"></script>
+
+    <!-- ORDERS JS -->
+    <script src="orders.js"></script>
+
+</body>
+
+</html>

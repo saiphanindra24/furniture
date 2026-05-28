@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Order Confirmation - Furniro</title>
+<link rel="stylesheet" href="order-confirmation.css">
+<link href="../assets/components/navbar.css" rel="stylesheet">
+<link href="../assets/components/footer.css" rel="stylesheet">
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <main class="confirmation-main">
+    <div class="confirmation-card">
+      <h1>Thank you for your order!</h1>
+      <p id="confirmation-sub">Your order has been placed successfully.</p>
+
+      <div id="order-details" class="order-details">
+        <!-- order details populated by JS -->
+      </div>
+
+      <div class="confirmation-actions">
+        <a href="../auth/orders.html" class="btn btn-primary">View My Orders</a>
+        <a href="../Home/Home.html" class="btn btn-secondary">Continue Shopping</a>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="../assets/components/layout.js"></script>
+  <script src="auth.js"></script>
+  <script src="order-confirmation.js"></script>
+</body>
+</html>

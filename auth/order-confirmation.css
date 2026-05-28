@@ -1,0 +1,12 @@
+body { font-family: 'Poppins', sans-serif; background: #fafafa; margin:0; }
+.confirmation-main { min-height: calc(100vh - 200px); display:flex; align-items:center; justify-content:center; padding:3rem; }
+.confirmation-card { max-width:720px; width:100%; background:#fff; padding:2.5rem; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.08); text-align:center; }
+.order-details { margin:1.5rem 0; text-align:left; }
+.order-summary { display:flex; gap:1rem; justify-content:space-between; flex-wrap:wrap; margin-bottom:1rem; }
+.order-items { background:#fafafa; padding:1rem; border-radius:8px; }
+.oc-item { display:flex; justify-content:space-between; padding:0.5rem 0; border-bottom:1px solid #f1f1f1; }
+.oc-item:last-child { border-bottom:none; }
+.confirmation-actions { display:flex; gap:1rem; justify-content:center; margin-top:1.25rem; }
+.btn { padding:0.75rem 1.25rem; border-radius:8px; text-decoration:none; font-weight:600; }
+.btn-primary { background:#B88E2F; color:#fff; }
+.btn-secondary { background:#e5e7eb; color:#374151; }
