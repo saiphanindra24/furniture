@@ -1,11 +1,67 @@
-async function loadComponent(id, file, callback) {
+const COMPONENT_BASE_URL = (() => {
+  const script = document.currentScript || Array.from(document.scripts).find(s => s.src && s.src.endsWith('/layout.js'));
+  if (script && script.src) {
+    return new URL('.', script.src).href;
+  }
+
   try {
-    const response = await fetch(file);
-
-    if (!response.ok) {
-      throw new Error(`Failed to load ${file}: ${response.status}`);
+    const pageUrl = new URL(window.location.href);
+    const segments = pageUrl.pathname.replace(/\/+$|[^/]*$/, '').split('/').filter(Boolean);
+    if (segments.length >= 1) {
+      segments.pop();
+      const fallbackPath = '/' + segments.join('/') + '/assets/components/';
+      pageUrl.pathname = fallbackPath;
+      return pageUrl.href;
     }
+  } catch (error) {
+    console.warn('Failed to derive component base URL from page location:', error);
+  }
 
+  return '/assets/components/';
+})();
+
+function getComponentUrl(file) {
+  try {
+    return new URL(file, COMPONENT_BASE_URL).href;
+  } catch (error) {
+    console.warn('Failed to resolve component URL for', file, 'using base', COMPONENT_BASE_URL, error);
+    return file;
+  }
+}
+
+async function loadComponent(id, file, callback) {
+  const candidates = [
+    getComponentUrl(file),
+    file,
+    `../assets/components/${file}`,
+    `./assets/components/${file}`,
+    `/assets/components/${file}`
+  ];
+
+  let response = null;
+  let attemptedUrl = null;
+
+  for (const candidate of candidates) {
+    if (!candidate) continue;
+
+    try {
+      const res = await fetch(candidate);
+      if (res.ok) {
+        response = res;
+        attemptedUrl = candidate;
+        break;
+      }
+    } catch (fetchError) {
+      console.warn(`Component fetch failed for ${candidate}:`, fetchError);
+    }
+  }
+
+  if (!response) {
+    console.error('Error loading component:', file, 'none of the candidate URLs worked:', candidates);
+    return;
+  }
+
+  try {
     const data = await response.text();
     const element = document.getElementById(id);
 
@@ -19,7 +75,7 @@ async function loadComponent(id, file, callback) {
       callback(element);
     }
   } catch (error) {
-    console.error('Error loading component:', error);
+    console.error('Error processing component HTML:', file, error);
   }
 }
 
@@ -251,8 +307,8 @@ function attachFooterNewsletterHandler() {
   form.addEventListener('submit', handleFooterNewsletterSubmit);
 }
 
-loadComponent('navbar', '../assets/components/navbar.html', updateNavbarAuthState);
+loadComponent('navbar', 'navbar.html', updateNavbarAuthState);
 
 if (!/signin\.html$/i.test(window.location.pathname) && !/signup\.html$/i.test(window.location.pathname)) {
-  loadComponent('footer', '../assets/components/footer.html', attachFooterNewsletterHandler);
+  loadComponent('footer', 'footer.html', attachFooterNewsletterHandler);
 }
