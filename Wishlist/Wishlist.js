@@ -83,7 +83,7 @@ function displayWishlist() {
         <div class="wishlist-item">
             <div class="wishlist-item-product">
                 <div class="wishlist-item-thumb">
-                    <img src="${encodeURI(imagePath)}" alt="${item.name}">
+                    <img src="${imagePath.replace(/ /g, '%20')}" alt="${item.name}">
                 </div>
                 <div class="wishlist-item-info">
                     <h3 class="wishlist-item-name">${item.name}</h3>
