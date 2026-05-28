@@ -89,45 +89,50 @@ document.addEventListener('DOMContentLoaded', () => {
 =======
 ﻿const signupForm = document.getElementById("signup-form");
 
-if (!signupForm) {
-    throw new Error('Signup form not found');
-}
+  if (!signupForm) {
+    console.error('Signup form not found');
+    return;
+  }
 
-signupForm.addEventListener("submit", (event) => {
+  signupForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    const name = document.getElementById("signup-name").value.trim();
-    const email = document.getElementById("signup-email").value.trim();
-    const password = document.getElementById("signup-password").value;
-    const confirmPassword = document.getElementById("signup-confirm-password").value;
+    const name = signupName.value.trim();
+    const email = signupEmail.value.trim();
+    const password = signupPassword.value;
+    const confirmPassword = signupConfirmPassword.value;
 
     if (!name || !email || !password || !confirmPassword) {
-        alert("Please fill in all fields.");
-        return;
+      showError('Please fill in all fields');
+      return;
     }
 
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-        alert("Please enter a valid email address.");
-        return;
+    const nameValidation = AuthUtils.validateName(name);
+    if (!nameValidation.valid) {
+      showError(nameValidation.message);
+      return;
     }
 
-    if (password.length < 6) {
-        alert("Password must be at least 6 characters long.");
-        return;
+    if (!AuthUtils.validateEmail(email)) {
+      showError('Please enter a valid email address');
+      return;
+    }
+
+    const passwordValidation = AuthUtils.validatePassword(password);
+    if (!passwordValidation.valid) {
+      showError(passwordValidation.message);
+      return;
     }
 
     if (password !== confirmPassword) {
-        alert("Passwords do not match.");
-        return;
+      showError('Passwords do not match');
+      return;
     }
 
-    const users = JSON.parse(localStorage.getItem("users") || '[]');
-    const existingUser = users.find(existing => existing.email === email);
-
+    const existingUser = AuthUtils.findUser(email);
     if (existingUser) {
-        alert("A user with that email already exists.");
-        return;
+      showError('Email already registered. Please sign in instead.');
+      return;
     }
 
     users.push({
