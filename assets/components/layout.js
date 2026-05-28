@@ -251,22 +251,7 @@ function attachFooterNewsletterHandler() {
   form.addEventListener('submit', handleFooterNewsletterSubmit);
 }
 
-<<<<<<< HEAD
-loadComponent('navbar', '../assets/components/navbar.html', () => {
-  // Load auth-utils first
-  const authScript = document.createElement('script');
-  authScript.src = '../auth/auth-utils.js';
-  authScript.onload = () => {
-    // Then load account-menu after auth-utils is ready
-    const script = document.createElement('script');
-    script.src = '../assets/components/account-menu.js';
-    document.head.appendChild(script);
-  };
-  document.head.appendChild(authScript);
-});
-=======
 loadComponent('navbar', '../assets/components/navbar.html', updateNavbarAuthState);
->>>>>>> vk-0040
 
 if (!/signin\.html$/i.test(window.location.pathname) && !/signup\.html$/i.test(window.location.pathname)) {
   loadComponent('footer', '../assets/components/footer.html', attachFooterNewsletterHandler);
